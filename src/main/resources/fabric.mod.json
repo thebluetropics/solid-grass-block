@@ -4,6 +4,7 @@
   "version": "0.1.0-alpha",
   "name": "Solid Grass Block",
   "authors": ["thebluetropics"],
+  "license": ["MIT"],
   "environment": "*",
   "entrypoints": {
     "main": [
