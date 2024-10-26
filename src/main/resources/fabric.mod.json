@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "solidgrassblock",
+  "version": "0.1.0-alpha",
+  "name": "Solid Grass Block",
+  "authors": ["thebluetropics"],
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.thebluetropics.solidgrassblock.SolidGrassBlockMod"
+    ],
+    "client": [
+      "io.github.thebluetropics.solidgrassblock.client.SolidGrassBlockModClient"
+    ]
+  },
+  "mixins": [
+    {
+      "environment": "*",
+      "config": "solidgrassblock.common.mixins.json"
+    }
+  ],
+  "depends": {
+    "minecraft": "1.20.6",
+    "fabricloader": ">=0.11.0",
+    "fabric-api": ">=0.97.8+1.20.6",
+    "java": ">=21"
+  }
+}

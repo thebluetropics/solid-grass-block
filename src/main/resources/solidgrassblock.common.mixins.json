@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "io.github.thebluetropics.solidgrassblock.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BoneMealItemMixin",
+    "HoeItemMixin",
+    "ShovelItemMixin",
+    "SpreadableBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
