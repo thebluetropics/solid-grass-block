@@ -23,11 +23,9 @@ public class BoneMealItemMixin {
     var blockPos = context.getBlockPos();
     var blockState = world.getBlockState(blockPos);
 
-    var stack = context.getStack();
-
     if (context.getSide() != Direction.UP && blockState.isOf(Blocks.GRASS_BLOCK)) {
       world.setBlockState(blockPos, ModBlocks.SOLID_GRASS_BLOCK.getDefaultState(), Block.NOTIFY_LISTENERS);
-      stack.decrement(1);
+      context.getStack().decrement(1);
 
       info.setReturnValue(ActionResult.SUCCESS);
     }

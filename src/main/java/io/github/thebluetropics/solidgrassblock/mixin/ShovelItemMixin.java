@@ -21,17 +21,30 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class ShovelItemMixin {
   @Inject(at = @At("HEAD"), method = "useOnBlock", cancellable = true)
   private void useOnBlock(ItemUsageContext context, CallbackInfoReturnable<ActionResult> info) {
-    World world = context.getWorld();
-    BlockPos blockPos = context.getBlockPos();
-    BlockState blockState = context.getWorld().getBlockState(blockPos);
+    var world = context.getWorld();
+
+    var blockPos = context.getBlockPos();
+    var blockState = context.getWorld().getBlockState(blockPos);
 
     if (!context.getSide().equals(Direction.DOWN) && blockState.isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
       if (world.getBlockState(blockPos.up()).isAir()) {
         if (!world.isClient()) {
-          world.setBlockState(blockPos, Blocks.DIRT_PATH.getDefaultState(), Block.NOTIFY_ALL_AND_REDRAW);
-          world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(context.getPlayer(), Blocks.DIRT_PATH.getDefaultState()));
-          if (context.getPlayer() != null) {
-            context.getStack().damage(1, context.getPlayer(), LivingEntity.getSlotForHand(context.getHand()));
+          world.setBlockState(
+            blockPos,
+            Blocks.DIRT_PATH.getDefaultState(),
+            Block.NOTIFY_ALL_AND_REDRAW
+          );
+          world.emitGameEvent(
+            GameEvent.BLOCK_CHANGE,
+            blockPos,
+            GameEvent.Emitter.of(context.getPlayer(), Blocks.DIRT_PATH.getDefaultState())
+          );
+
+          var player = context.getPlayer();
+          var stack = context.getStack();
+
+          if (player != null) {
+            stack.damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
           }
         }
 

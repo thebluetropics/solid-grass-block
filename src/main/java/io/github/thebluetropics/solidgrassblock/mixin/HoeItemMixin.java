@@ -22,20 +22,31 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class HoeItemMixin {
   @Inject(at = @At("HEAD"), method = "useOnBlock", cancellable = true)
   private void useOnBlock(ItemUsageContext context, CallbackInfoReturnable<ActionResult> info) {
-    World world = context.getWorld();
-    BlockPos pos = context.getBlockPos();
+    var world = context.getWorld();
+    var player = context.getPlayer();
 
-    if (world.getBlockState(pos).isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
+    var blockPos = context.getBlockPos();
+
+    if (world.getBlockState(blockPos).isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
       if (HoeItem.canTillFarmland(context)) {
-        PlayerEntity player = context.getPlayer();
-        world.playSound(player, pos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
+        world.playSound(player, blockPos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
 
         if (!world.isClient()) {
-          world.setBlockState(pos, Blocks.FARMLAND.getDefaultState(), Block.NOTIFY_ALL_AND_REDRAW);
-          world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, Blocks.FARMLAND.getDefaultState()));
+          world.setBlockState(
+            blockPos,
+            Blocks.FARMLAND.getDefaultState(),
+            Block.NOTIFY_ALL_AND_REDRAW
+          );
+          world.emitGameEvent(
+            GameEvent.BLOCK_CHANGE,
+            blockPos,
+            GameEvent.Emitter.of(player, Blocks.FARMLAND.getDefaultState())
+          );
+
+          var stack = context.getStack();
 
           if (player != null) {
-            context.getStack().damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
+            stack.damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
           }
         }
 
