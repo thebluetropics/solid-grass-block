@@ -8,5 +8,3 @@ pluginManagement {
     }
   }
 }
-
-rootProject.name = "solid-grass-block"
