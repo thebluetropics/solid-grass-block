@@ -1,12 +1,2 @@
-# Gradle
-/.gradle/
-/build/
-
-# Intellij IDEA
-/.idea/
-
-# Loom
+# Minecraft
 /run/
-
-# MacOS
-.DS_Store
