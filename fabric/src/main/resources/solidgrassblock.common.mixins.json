@@ -5,8 +5,7 @@
   "mixins": [
     "BoneMealItemMixin",
     "HoeItemMixin",
-    "ShovelItemMixin",
-    "SpreadableBlockMixin"
+    "ShovelItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1
