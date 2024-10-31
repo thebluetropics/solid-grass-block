@@ -44,5 +44,13 @@ publishing {
       name = "Mods"
       url = uri(layout.buildDirectory.dir("repository"))
     }
+    maven {
+      name = "GithubPackages"
+      url = uri(properties["github_packages_url"].toString())
+      credentials {
+        username = System.getenv("GITHUB_ACTOR")
+        password = System.getenv("GITHUB_TOKEN")
+      }
+    }
   }
 }
