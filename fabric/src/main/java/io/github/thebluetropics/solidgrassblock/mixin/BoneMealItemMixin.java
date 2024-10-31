@@ -1,6 +1,7 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
+import io.github.thebluetropics.solidgrassblock.block.SolidGrassBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.BoneMealItem;
@@ -28,6 +29,15 @@ public class BoneMealItemMixin {
       context.getStack().decrement(1);
 
       info.setReturnValue(ActionResult.SUCCESS);
+    }
+
+    if (context.getSide().equals(Direction.UP) && blockState.isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
+      if (blockState.get(SolidGrassBlock.EATEN)) {
+        world.setBlockState(blockPos, ModBlocks.SOLID_GRASS_BLOCK.getDefaultState(), Block.NOTIFY_LISTENERS);
+        context.getStack().decrement(1);
+
+        info.setReturnValue(ActionResult.SUCCESS);
+      }
     }
   }
 }

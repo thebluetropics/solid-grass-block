@@ -1,7 +1,40 @@
 {
-  "variants": {
-    "": {
-      "model": "solidgrassblock:block/solid_grass_block"
+  "multipart": [
+    {
+      "apply": {
+        "model": "solidgrassblock:block/solid_grass_block"
+      },
+      "when": {
+        "eaten": false,
+        "snowy": false
+      }
+    },
+    {
+      "apply": {
+        "model": "solidgrassblock:block/solid_grass_block_eaten"
+      },
+      "when": {
+        "eaten": true,
+        "snowy": false
+      }
+    },
+    {
+      "apply": {
+        "model": "solidgrassblock:block/solid_grass_block"
+      },
+      "when": {
+        "eaten": false,
+        "snowy": true
+      }
+    },
+    {
+      "apply": {
+        "model": "solidgrassblock:block/solid_grass_block_eaten"
+      },
+      "when": {
+        "eaten": true,
+        "snowy": true
+      }
     }
-  }
+  ]
 }
