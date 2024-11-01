@@ -6,6 +6,7 @@
   "authors": ["thebluetropics"],
   "license": ["MIT"],
   "environment": "*",
+  "icon": "assets/solidgrassblock/icon.png",
   "entrypoints": {
     "main": [
       "io.github.thebluetropics.solidgrassblock.SolidGrassBlockMod"
