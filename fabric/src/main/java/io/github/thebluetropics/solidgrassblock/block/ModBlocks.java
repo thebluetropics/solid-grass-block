@@ -5,6 +5,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
+import net.minecraft.block.enums.Instrument;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
@@ -49,6 +50,30 @@ public class ModBlocks {
         .ticksRandomly()
         .strength(0.6F)
         .sounds(BlockSoundGroup.GRASS)
+    )
+  );
+  public static final Block SOLID_CRIMSON_NYLIUM = register(
+    "solid_crimson_nylium",
+    new SolidNyliumBlock(
+      AbstractBlock.Settings.create()
+        .mapColor(MapColor.DULL_RED)
+        .instrument(Instrument.BASEDRUM)
+        .requiresTool()
+        .strength(0.4F)
+        .sounds(BlockSoundGroup.NYLIUM)
+        .ticksRandomly()
+    )
+  );
+  public static final Block SOLID_WARPED_NYLIUM = register(
+    "solid_warped_nylium",
+    new SolidNyliumBlock(
+      AbstractBlock.Settings.create()
+        .mapColor(MapColor.TEAL)
+        .instrument(Instrument.BASEDRUM)
+        .requiresTool()
+        .strength(0.4F)
+        .sounds(BlockSoundGroup.NYLIUM)
+        .ticksRandomly()
     )
   );
 

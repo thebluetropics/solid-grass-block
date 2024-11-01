@@ -27,6 +27,8 @@ public class SolidGrassBlockMod implements ModInitializer {
         fabricItemGroupEntries.add(ModItems.SOLID_DIRT_PATH.getDefaultStack());
         fabricItemGroupEntries.add(ModItems.SOLID_PODZOL.getDefaultStack());
         fabricItemGroupEntries.add(ModItems.SOLID_MYCELIUM.getDefaultStack());
+        fabricItemGroupEntries.add(ModItems.SOLID_CRIMSON_NYLIUM.getDefaultStack());
+        fabricItemGroupEntries.add(ModItems.SOLID_WARPED_NYLIUM.getDefaultStack());
       }
     });
   }

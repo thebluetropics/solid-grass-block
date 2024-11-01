@@ -42,6 +42,20 @@ public class ModItems {
       new Item.Settings()
     )
   );
+  public static final BlockItem SOLID_CRIMSON_NYLIUM = register(
+    "solid_crimson_nylium",
+    new BlockItem(
+      ModBlocks.SOLID_CRIMSON_NYLIUM,
+      new Item.Settings()
+    )
+  );
+  public static final BlockItem SOLID_WARPED_NYLIUM = register(
+    "solid_warped_nylium",
+    new BlockItem(
+      ModBlocks.SOLID_WARPED_NYLIUM,
+      new Item.Settings()
+    )
+  );
 
   public static <T extends Item> T register(String id, T item) {
     return Registry.register(Registries.ITEM, new Identifier(SolidGrassBlockMod.ID, id), item);
