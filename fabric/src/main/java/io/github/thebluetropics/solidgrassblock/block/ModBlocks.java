@@ -3,6 +3,7 @@ package io.github.thebluetropics.solidgrassblock.block;
 import io.github.thebluetropics.solidgrassblock.SolidGrassBlockMod;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -17,6 +18,36 @@ public class ModBlocks {
         .mapColor(MapColor.PALE_GREEN)
         .ticksRandomly()
         .strength(0.6f)
+        .sounds(BlockSoundGroup.GRASS)
+    )
+  );
+  public static final Block SOLID_DIRT_PATH = register(
+    "solid_dirt_path",
+    new SolidDirtPathBlock(
+      AbstractBlock.Settings.create()
+        .mapColor(MapColor.DIRT_BROWN)
+        .strength(0.65F)
+        .sounds(BlockSoundGroup.GRASS)
+        .blockVision(Blocks::always)
+        .suffocates(Blocks::always)
+    )
+  );
+  public static final Block SOLID_PODZOL = register(
+    "solid_podzol",
+    new SolidPodzolBlock(
+      AbstractBlock.Settings.create()
+        .mapColor(MapColor.SPRUCE_BROWN)
+        .strength(0.5F)
+        .sounds(BlockSoundGroup.GRAVEL)
+    )
+  );
+  public static final Block SOLID_MYCELIUM = register(
+    "solid_mycelium",
+    new SolidMyceliumBlock(
+      AbstractBlock.Settings.create()
+        .mapColor(MapColor.PURPLE)
+        .ticksRandomly()
+        .strength(0.6F)
         .sounds(BlockSoundGroup.GRASS)
     )
   );

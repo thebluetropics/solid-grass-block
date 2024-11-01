@@ -1,6 +1,7 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
+import io.github.thebluetropics.solidgrassblock.helper.BlockStateHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
@@ -27,7 +28,7 @@ public class HoeItemMixin {
 
     var blockPos = context.getBlockPos();
 
-    if (world.getBlockState(blockPos).isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
+    if (BlockStateHelper.isOf(world.getBlockState(blockPos), ModBlocks.SOLID_GRASS_BLOCK, ModBlocks.SOLID_DIRT_PATH)) {
       if (HoeItem.canTillFarmland(context)) {
         world.playSound(player, blockPos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
 

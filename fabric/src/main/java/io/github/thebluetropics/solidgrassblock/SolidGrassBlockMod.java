@@ -4,6 +4,7 @@ import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
 import io.github.thebluetropics.solidgrassblock.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemGroups;
 import org.slf4j.Logger;
@@ -23,6 +24,9 @@ public class SolidGrassBlockMod implements ModInitializer {
     ItemGroupEvents.MODIFY_ENTRIES_ALL.register((itemGroup, fabricItemGroupEntries) -> {
       if (Objects.equals(itemGroup, ItemGroups.getDefaultTab())) {
         fabricItemGroupEntries.add(ModItems.SOLID_GRASS_BLOCK.getDefaultStack());
+        fabricItemGroupEntries.add(ModItems.SOLID_DIRT_PATH.getDefaultStack());
+        fabricItemGroupEntries.add(ModItems.SOLID_PODZOL.getDefaultStack());
+        fabricItemGroupEntries.add(ModItems.SOLID_MYCELIUM.getDefaultStack());
       }
     });
   }

@@ -57,7 +57,9 @@ public class SolidGrassBlock extends GrassBlock {
     );
 
     if (realisticOpacity < world.getMaxLightLevel()) {
-      world.setBlockState(blockPos, blockState.with(EATEN, false), Block.NOTIFY_LISTENERS);
+      if (blockState.get(EATEN)) {
+        world.setBlockState(blockPos, blockState.with(EATEN, false), Block.NOTIFY_LISTENERS);
+      }
     }
   }
 

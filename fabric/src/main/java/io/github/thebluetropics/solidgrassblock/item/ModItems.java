@@ -9,6 +9,9 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ModItems {
   public static final BlockItem SOLID_GRASS_BLOCK = register(
     "solid_grass_block",
@@ -16,6 +19,27 @@ public class ModItems {
       ModBlocks.SOLID_GRASS_BLOCK,
       new Item.Settings()
         .component(ModDataComponents.EATEN, false)
+    )
+  );
+  public static final BlockItem SOLID_DIRT_PATH = register(
+    "solid_dirt_path",
+    new BlockItem(
+      ModBlocks.SOLID_DIRT_PATH,
+      new Item.Settings()
+    )
+  );
+  public static final BlockItem SOLID_PODZOL = register(
+    "solid_podzol",
+    new BlockItem(
+      ModBlocks.SOLID_PODZOL,
+      new Item.Settings()
+    )
+  );
+  public static final BlockItem SOLID_MYCELIUM = register(
+    "solid_mycelium",
+    new BlockItem(
+      ModBlocks.SOLID_MYCELIUM,
+      new Item.Settings()
     )
   );
 

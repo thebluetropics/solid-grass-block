@@ -1,3 +1,6 @@
 {
-  "block.solidgrassblock.solid_grass_block": "Solid Grass Block"
+  "block.solidgrassblock.solid_grass_block": "Solid Grass Block",
+  "block.solidgrassblock.solid_dirt_path": "Solid Dirt Path",
+  "block.solidgrassblock.solid_podzol": "Solid Podzol",
+  "block.solidgrassblock.solid_mycelium": "Solid Mycelium"
 }

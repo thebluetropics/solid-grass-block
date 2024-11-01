@@ -10,7 +10,6 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.predicate.block.BlockStatePredicate;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldEvents;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;

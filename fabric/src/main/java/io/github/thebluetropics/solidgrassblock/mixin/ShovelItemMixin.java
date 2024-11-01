@@ -1,6 +1,8 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
+import io.github.thebluetropics.solidgrassblock.block.SolidDirtPathBlock;
+import io.github.thebluetropics.solidgrassblock.helper.BlockStateHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -26,7 +28,8 @@ public class ShovelItemMixin {
     var blockPos = context.getBlockPos();
     var blockState = context.getWorld().getBlockState(blockPos);
 
-    if (!context.getSide().equals(Direction.DOWN) && blockState.isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
+    // turns into dirt path
+    if (!context.getSide().equals(Direction.DOWN) && BlockStateHelper.isOf(blockState, ModBlocks.SOLID_GRASS_BLOCK, ModBlocks.SOLID_PODZOL, ModBlocks.SOLID_MYCELIUM)) {
       if (world.getBlockState(blockPos.up()).isAir()) {
         if (!world.isClient()) {
           world.setBlockState(
@@ -50,6 +53,54 @@ public class ShovelItemMixin {
 
         info.setReturnValue(ActionResult.success(world.isClient));
       }
+    }
+
+    // turns dirt path into solid dirt path
+    if (!context.getSide().equals(Direction.UP) && blockState.isOf(Blocks.DIRT_PATH)) {
+      world.setBlockState(
+        blockPos,
+        ModBlocks.SOLID_DIRT_PATH.getDefaultState(),
+        Block.NOTIFY_ALL_AND_REDRAW
+      );
+      world.emitGameEvent(
+        GameEvent.BLOCK_CHANGE,
+        blockPos,
+        GameEvent.Emitter.of(context.getPlayer(), ModBlocks.SOLID_DIRT_PATH.getDefaultState())
+      );
+
+      var player = context.getPlayer();
+      var stack = context.getStack();
+
+      if (player != null) {
+        stack.damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
+      }
+
+      info.setReturnValue(ActionResult.success(world.isClient));
+    }
+
+    // cycle full-cube state for solid dirt path
+    if (context.getSide().equals(Direction.UP) && blockState.isOf(ModBlocks.SOLID_DIRT_PATH)) {
+      var newBlockState = blockState.with(SolidDirtPathBlock.FULL_CUBE, !blockState.get(SolidDirtPathBlock.FULL_CUBE));
+
+      world.setBlockState(
+        blockPos,
+        newBlockState,
+        Block.NOTIFY_ALL_AND_REDRAW
+      );
+      world.emitGameEvent(
+        GameEvent.BLOCK_CHANGE,
+        blockPos,
+        GameEvent.Emitter.of(context.getPlayer(), newBlockState)
+      );
+
+      var player = context.getPlayer();
+      var stack = context.getStack();
+
+      if (player != null) {
+        stack.damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
+      }
+
+      info.setReturnValue(ActionResult.success(world.isClient));
     }
   }
 }

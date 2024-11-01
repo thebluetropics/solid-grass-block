@@ -31,6 +31,20 @@ public class BoneMealItemMixin {
       info.setReturnValue(ActionResult.SUCCESS);
     }
 
+    if (context.getSide() != Direction.UP && blockState.isOf(Blocks.PODZOL)) {
+      world.setBlockState(blockPos, ModBlocks.SOLID_PODZOL.getDefaultState(), Block.NOTIFY_LISTENERS);
+      context.getStack().decrement(1);
+
+      info.setReturnValue(ActionResult.SUCCESS);
+    }
+
+    if (context.getSide() != Direction.UP && blockState.isOf(Blocks.MYCELIUM)) {
+      world.setBlockState(blockPos, ModBlocks.SOLID_MYCELIUM.getDefaultState(), Block.NOTIFY_LISTENERS);
+      context.getStack().decrement(1);
+
+      info.setReturnValue(ActionResult.SUCCESS);
+    }
+
     if (context.getSide().equals(Direction.UP) && blockState.isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
       if (blockState.get(SolidGrassBlock.EATEN)) {
         world.setBlockState(blockPos, ModBlocks.SOLID_GRASS_BLOCK.getDefaultState(), Block.NOTIFY_LISTENERS);
