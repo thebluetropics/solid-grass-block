@@ -16,7 +16,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.chunk.light.ChunkLightProvider;
 
-import java.util.List;
 import java.util.Objects;
 
 public class SolidGrassBlock extends Block implements Fertilizable {
