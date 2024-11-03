@@ -1,1 +1,1 @@
-A mod that introduces Solid Grass Block to your Minecraft world.
+A mod that adds the solid variant of all grass blocks to your Minecraft world.
