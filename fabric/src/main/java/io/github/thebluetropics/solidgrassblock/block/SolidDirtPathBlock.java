@@ -48,7 +48,6 @@ public class SolidDirtPathBlock extends Block {
     return false;
   }
 
-  @SuppressWarnings("deprecation")
   @Nullable
   @Override
   public BlockState getPlacementState(ItemPlacementContext context) {
@@ -57,16 +56,20 @@ public class SolidDirtPathBlock extends Block {
 
     return getDefaultState()
       .with(FULL_CUBE, false)
-      .with(CONNECTED, world.getBlockState(upperBlockPos).isSolid());
+      .with(CONNECTED, world.getBlockState(upperBlockPos).isSolidBlock(world, upperBlockPos));
   }
 
-  @SuppressWarnings("deprecation")
   @Override
   protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
     return state
       .with(
         CONNECTED,
-        Objects.equals(direction, Direction.UP) && neighborState.isSolid()
+        Objects.equals(direction, Direction.UP) && neighborState.isSolidBlock(world, neighborPos)
       );
+  }
+
+  @Override
+  protected boolean hasSidedTransparency(BlockState state) {
+    return true;
   }
 }
