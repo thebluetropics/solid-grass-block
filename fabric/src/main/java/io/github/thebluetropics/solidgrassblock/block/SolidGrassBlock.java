@@ -29,8 +29,6 @@ public class SolidGrassBlock extends Block implements Fertilizable {
 
   @Override
   protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-    super.appendProperties(builder);
-
     builder.add(EATEN);
   }
 
