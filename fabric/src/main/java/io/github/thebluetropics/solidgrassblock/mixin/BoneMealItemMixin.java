@@ -13,6 +13,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.Objects;
+
 @Mixin(BoneMealItem.class)
 public class BoneMealItemMixin {
   @Inject(at = @At("HEAD"), method = "useOnBlock", cancellable = true)
@@ -21,6 +23,13 @@ public class BoneMealItemMixin {
 
     var blockPos = context.getBlockPos();
     var blockState = world.getBlockState(blockPos);
+
+    if (Objects.equals(context.getSide(), Direction.UP) && blockState.isOf(Blocks.DIRT)) {
+      world.setBlockState(blockPos, Blocks.GRASS_BLOCK.getDefaultState(), Block.NOTIFY_LISTENERS);
+      context.getStack().decrement(1);
+
+      info.setReturnValue(ActionResult.SUCCESS);
+    }
 
     if (context.getSide() != Direction.UP && blockState.isOf(Blocks.GRASS_BLOCK)) {
       world.setBlockState(blockPos, ModBlocks.SOLID_GRASS_BLOCK.getDefaultState(), Block.NOTIFY_LISTENERS);
