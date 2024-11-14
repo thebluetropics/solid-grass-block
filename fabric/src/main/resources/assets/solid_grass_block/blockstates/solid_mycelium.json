@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "solidgrassblock:block/solid_podzol"
+        "model": "solid_grass_block:block/solid_mycelium"
       }
     }
   ]

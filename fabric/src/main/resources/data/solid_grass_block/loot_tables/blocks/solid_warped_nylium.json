@@ -10,7 +10,6 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "solidgrassblock:solid_mycelium",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",
@@ -27,16 +26,17 @@
                     }
                   }
                 }
-              ]
+              ],
+              "name": "solid_grass_block:solid_warped_nylium"
             },
             {
               "type": "minecraft:item",
-              "name": "minecraft:dirt",
               "conditions": [
                 {
                   "condition": "minecraft:survives_explosion"
                 }
-              ]
+              ],
+              "name": "minecraft:netherrack"
             }
           ]
         }

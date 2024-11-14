@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Objects;
 
 public class SolidGrassBlockMod implements ModInitializer {
-  public static final String ID = "solidgrassblock";
+  public static final String ID = "solid_grass_block";
   public static final Logger LOGGER = LoggerFactory.getLogger(ID);
 
   @Override

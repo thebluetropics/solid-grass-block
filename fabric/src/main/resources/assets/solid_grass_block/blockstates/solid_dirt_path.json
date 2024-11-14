@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "solidgrassblock:block/solid_dirt_path"
+        "model": "solid_grass_block:block/solid_dirt_path"
       },
       "when": {
         "full_cube": false,
@@ -11,7 +11,7 @@
     },
     {
       "apply": {
-        "model": "solidgrassblock:block/solid_dirt_path_full_cube"
+        "model": "solid_grass_block:block/solid_dirt_path_full_cube"
       },
       "when": {
         "full_cube": true,
@@ -20,7 +20,7 @@
     },
     {
       "apply": {
-        "model": "solidgrassblock:block/solid_dirt_path_full_cube"
+        "model": "solid_grass_block:block/solid_dirt_path_full_cube"
       },
       "when": {
         "full_cube": false,
@@ -29,7 +29,7 @@
     },
     {
       "apply": {
-        "model": "solidgrassblock:block/solid_dirt_path_full_cube"
+        "model": "solid_grass_block:block/solid_dirt_path_full_cube"
       },
       "when": {
         "full_cube": true,

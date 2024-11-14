@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "solidgrassblock:block/solid_grass_block"
+        "model": "solid_grass_block:block/solid_grass_block"
       },
       "when": {
         "eaten": false
@@ -10,7 +10,7 @@
     },
     {
       "apply": {
-        "model": "solidgrassblock:block/solid_grass_block_eaten"
+        "model": "solid_grass_block:block/solid_grass_block_eaten"
       },
       "when": {
         "eaten": true

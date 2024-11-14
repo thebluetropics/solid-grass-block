@@ -10,7 +10,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "solidgrassblock:solid_podzol",
+              "name": "solid_grass_block:solid_mycelium",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",

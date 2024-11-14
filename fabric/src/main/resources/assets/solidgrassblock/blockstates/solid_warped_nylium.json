@@ -1,9 +1,0 @@
-{
-  "multipart": [
-    {
-      "apply": {
-        "model": "solidgrassblock:block/solid_warped_nylium"
-      }
-    }
-  ]
-}

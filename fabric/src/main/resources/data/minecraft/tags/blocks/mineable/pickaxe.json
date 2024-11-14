@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "solidgrassblock:solid_crimson_nylium",
-    "solidgrassblock:solid_warped_nylium"
+    "solid_grass_block:solid_crimson_nylium",
+    "solid_grass_block:solid_warped_nylium"
   ]
 }

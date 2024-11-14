@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "solidgrassblock:solid_podzol",
-    "solidgrassblock:solid_mycelium",
-    "solidgrassblock:solid_crimson_nylium",
-    "solidgrassblock:solid_warped_nylium"
+    "solid_grass_block:solid_podzol",
+    "solid_grass_block:solid_mycelium",
+    "solid_grass_block:solid_crimson_nylium",
+    "solid_grass_block:solid_warped_nylium"
   ]
 }

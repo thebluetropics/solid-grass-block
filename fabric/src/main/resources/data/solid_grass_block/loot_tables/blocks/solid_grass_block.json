@@ -10,12 +10,12 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "solidgrassblock:solid_grass_block",
+              "name": "solid_grass_block:solid_grass_block",
               "functions": [
                 {
                   "function": "minecraft:set_components",
                   "components": {
-                    "solidgrassblock:eaten": true
+                    "solid_grass_block:eaten": true
                   }
                 }
               ],
@@ -37,7 +37,7 @@
                 },
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "solidgrassblock:solid_grass_block",
+                  "block": "solid_grass_block:solid_grass_block",
                   "properties": {
                     "eaten": "true"
                   }
@@ -46,12 +46,12 @@
             },
             {
               "type": "minecraft:item",
-              "name": "solidgrassblock:solid_grass_block",
+              "name": "solid_grass_block:solid_grass_block",
               "functions": [
                 {
                   "function": "minecraft:set_components",
                   "components": {
-                    "solidgrassblock:eaten": false
+                    "solid_grass_block:eaten": false
                   }
                 }
               ],
@@ -73,7 +73,7 @@
                 },
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "solidgrassblock:solid_grass_block",
+                  "block": "solid_grass_block:solid_grass_block",
                   "properties": {
                     "eaten": "false"
                   }

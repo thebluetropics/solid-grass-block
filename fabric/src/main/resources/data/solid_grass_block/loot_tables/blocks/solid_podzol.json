@@ -10,7 +10,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "solidgrassblock:solid_dirt_path",
+              "name": "solid_grass_block:solid_podzol",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",

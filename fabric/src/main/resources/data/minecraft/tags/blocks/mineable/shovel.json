@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "solidgrassblock:solid_grass_block",
-    "solidgrassblock:solid_dirt_path",
-    "solidgrassblock:solid_podzol",
-    "solidgrassblock:solid_mycelium"
+    "solid_grass_block:solid_grass_block",
+    "solid_grass_block:solid_dirt_path",
+    "solid_grass_block:solid_podzol",
+    "solid_grass_block:solid_mycelium"
   ]
 }

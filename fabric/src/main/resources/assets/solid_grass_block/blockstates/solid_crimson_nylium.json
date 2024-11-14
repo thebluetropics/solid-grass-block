@@ -1,0 +1,9 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "solid_grass_block:block/solid_crimson_nylium"
+      }
+    }
+  ]
+}

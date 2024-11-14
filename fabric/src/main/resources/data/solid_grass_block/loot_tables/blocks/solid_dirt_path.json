@@ -10,6 +10,7 @@
           "children": [
             {
               "type": "minecraft:item",
+              "name": "solid_grass_block:solid_dirt_path",
               "conditions": [
                 {
                   "condition": "minecraft:match_tool",
@@ -26,17 +27,16 @@
                     }
                   }
                 }
-              ],
-              "name": "solidgrassblock:solid_crimson_nylium"
+              ]
             },
             {
               "type": "minecraft:item",
+              "name": "minecraft:dirt",
               "conditions": [
                 {
                   "condition": "minecraft:survives_explosion"
                 }
-              ],
-              "name": "minecraft:netherrack"
+              ]
             }
           ]
         }
