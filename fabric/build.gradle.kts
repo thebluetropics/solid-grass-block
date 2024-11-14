@@ -6,7 +6,7 @@ plugins {
 val minecraftVersion = properties["minecraft_version"] as String
 
 base {
-  archivesName = "${properties["artifact_name"].toString()}-fabric-${minecraftVersion}"
+  archivesName = "${properties["artifact_name"].toString()}-fabric"
 }
 
 dependencies {

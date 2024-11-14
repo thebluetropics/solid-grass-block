@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "solidgrassblock",
-  "version": "0.1.5-beta",
+  "version": "0.1.5-beta+1.20.6",
   "name": "Solid Grass Block",
   "authors": ["thebluetropics"],
   "license": ["MIT"],
