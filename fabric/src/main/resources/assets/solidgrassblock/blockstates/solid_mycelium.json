@@ -1,7 +1,9 @@
 {
-  "variants": {
-    "": {
-      "model": "solidgrassblock:block/solid_mycelium"
+  "multipart": [
+    {
+      "apply": {
+        "model": "solidgrassblock:block/solid_mycelium"
+      }
     }
-  }
+  ]
 }

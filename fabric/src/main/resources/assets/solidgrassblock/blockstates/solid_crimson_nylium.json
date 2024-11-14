@@ -1,7 +1,9 @@
 {
-  "variants": {
-    "": {
-      "model": "solidgrassblock:block/solid_crimson_nylium"
+  "multipart": [
+    {
+      "apply": {
+        "model": "solidgrassblock:block/solid_crimson_nylium"
+      }
     }
-  }
+  ]
 }
