@@ -4,5 +4,6 @@
   "block.solid_grass_block.solid_podzol": "Solid Podzol",
   "block.solid_grass_block.solid_mycelium": "Solid Mycelium",
   "block.solid_grass_block.solid_crimson_nylium": "Solid Crimson Nylium",
-  "block.solid_grass_block.solid_warped_nylium": "Solid Warped Nylium"
+  "block.solid_grass_block.solid_warped_nylium": "Solid Warped Nylium",
+  "itemGroup.solid_grass_block.solid_grass_block": "Solid Grass Block"
 }

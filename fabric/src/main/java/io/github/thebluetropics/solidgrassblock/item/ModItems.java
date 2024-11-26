@@ -9,7 +9,13 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 public class ModItems {
+  private static final ArrayList<Item> items = new ArrayList<>();
+
   public static final BlockItem SOLID_GRASS_BLOCK = register(
     "solid_grass_block",
     new BlockItem(
@@ -55,7 +61,19 @@ public class ModItems {
   );
 
   public static <T extends Item> T register(String id, T item) {
-    return Registry.register(Registries.ITEM, new Identifier(SolidGrassBlockMod.ID, id), item);
+    Registry.register(Registries.ITEM, new Identifier(SolidGrassBlockMod.ID, id), item);
+
+    items.add(item);
+
+    return item;
+  }
+
+  public static Item[] toArray() {
+    return items.toArray(new Item[] {});
+  }
+
+  public static Set<Item> toSet() {
+    return new HashSet<>(items);
   }
 
   public static void initialize() { /* ... */ }
