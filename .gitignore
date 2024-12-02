@@ -7,3 +7,9 @@ build/
 
 # MacOS
 *.DS_Store
+
+# Minecraft
+/run/
+
+# Maven
+/repository/
