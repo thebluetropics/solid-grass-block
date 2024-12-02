@@ -1,2 +1,5 @@
 # Minecraft
 /run/
+
+# Maven
+/repository/

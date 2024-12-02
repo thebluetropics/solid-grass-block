@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "solid_grass_block",
-  "version": "0.1.5-beta+1.20.6",
+  "id": "%mod_id%",
+  "version": "%version%",
   "name": "Solid Grass Block",
   "authors": ["thebluetropics"],
   "license": ["MIT"],
   "environment": "*",
-  "icon": "assets/solid_grass_block/icon.png",
+  "icon": "assets/%mod_id%/icon.png",
   "entrypoints": {
     "main": [
       "io.github.thebluetropics.solidgrassblock.SolidGrassBlockMod"
@@ -18,7 +18,7 @@
   "mixins": [
     {
       "environment": "*",
-      "config": "solid_grass_block.common.mixins.json"
+      "config": "%mod_id%.common.mixins.json"
     }
   ],
   "depends": {
