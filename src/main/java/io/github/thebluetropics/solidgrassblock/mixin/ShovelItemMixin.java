@@ -25,7 +25,7 @@ public class ShovelItemMixin {
     var blockPos = context.getBlockPos();
     var blockState = context.getWorld().getBlockState(blockPos);
 
-    // turns into dirt path
+    // Turns into Dirt Path
     if (!context.getSide().equals(Direction.DOWN) && BlockStateHelper.isOf(blockState, ModBlocks.SOLID_GRASS_BLOCK, ModBlocks.SOLID_PODZOL, ModBlocks.SOLID_MYCELIUM)) {
       if (world.getBlockState(blockPos.up()).isAir()) {
         if (!world.isClient()) {
@@ -52,7 +52,7 @@ public class ShovelItemMixin {
       }
     }
 
-    // turns dirt path into solid dirt path
+    // Turns Dirt Path into Solid Dirt Path
     if (!context.getSide().equals(Direction.UP) && blockState.isOf(Blocks.DIRT_PATH)) {
       world.setBlockState(
         blockPos,
@@ -75,7 +75,7 @@ public class ShovelItemMixin {
       info.setReturnValue(ActionResult.success(world.isClient));
     }
 
-    // cycle full-cube state for solid dirt path
+    // Cycle `full_cube` block state for Solid Dirt Path
     if (context.getSide().equals(Direction.UP) && blockState.isOf(ModBlocks.SOLID_DIRT_PATH)) {
       var newBlockState = blockState.with(SolidDirtPathBlock.FULL_CUBE, !blockState.get(SolidDirtPathBlock.FULL_CUBE));
 

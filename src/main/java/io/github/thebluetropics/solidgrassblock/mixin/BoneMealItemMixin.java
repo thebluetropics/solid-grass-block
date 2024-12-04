@@ -24,6 +24,7 @@ public class BoneMealItemMixin {
     var blockPos = context.getBlockPos();
     var blockState = world.getBlockState(blockPos);
 
+    // Turns Dirt into Grass Block
     if (Objects.equals(context.getSide(), Direction.UP) && blockState.isOf(Blocks.DIRT)) {
       world.setBlockState(blockPos, Blocks.GRASS_BLOCK.getDefaultState(), Block.NOTIFY_LISTENERS);
       context.getStack().decrement(1);
@@ -31,6 +32,7 @@ public class BoneMealItemMixin {
       info.setReturnValue(ActionResult.SUCCESS);
     }
 
+    // Turns Grass Block into Solid Grass Block
     if (context.getSide() != Direction.UP && blockState.isOf(Blocks.GRASS_BLOCK)) {
       world.setBlockState(blockPos, ModBlocks.SOLID_GRASS_BLOCK.getDefaultState(), Block.NOTIFY_LISTENERS);
       context.getStack().decrement(1);
@@ -38,6 +40,7 @@ public class BoneMealItemMixin {
       info.setReturnValue(ActionResult.SUCCESS);
     }
 
+    // Turns Podzol into Solid Podzol
     if (context.getSide() != Direction.UP && blockState.isOf(Blocks.PODZOL)) {
       world.setBlockState(blockPos, ModBlocks.SOLID_PODZOL.getDefaultState(), Block.NOTIFY_LISTENERS);
       context.getStack().decrement(1);
@@ -45,6 +48,7 @@ public class BoneMealItemMixin {
       info.setReturnValue(ActionResult.SUCCESS);
     }
 
+    // Turns Mycelium into Solid Mycelium
     if (context.getSide() != Direction.UP && blockState.isOf(Blocks.MYCELIUM)) {
       world.setBlockState(blockPos, ModBlocks.SOLID_MYCELIUM.getDefaultState(), Block.NOTIFY_LISTENERS);
       context.getStack().decrement(1);
@@ -52,6 +56,7 @@ public class BoneMealItemMixin {
       info.setReturnValue(ActionResult.SUCCESS);
     }
 
+    // Turns Crimson Nylium into Solid Crimson Nylium
     if (context.getSide() != Direction.UP && blockState.isOf(Blocks.CRIMSON_NYLIUM)) {
       world.setBlockState(blockPos, ModBlocks.SOLID_CRIMSON_NYLIUM.getDefaultState(), Block.NOTIFY_LISTENERS);
       context.getStack().decrement(1);
@@ -59,6 +64,7 @@ public class BoneMealItemMixin {
       info.setReturnValue(ActionResult.SUCCESS);
     }
 
+    // Turns Warped Nylium into Solid Waroed Nylium
     if (context.getSide() != Direction.UP && blockState.isOf(Blocks.WARPED_NYLIUM)) {
       world.setBlockState(blockPos, ModBlocks.SOLID_WARPED_NYLIUM.getDefaultState(), Block.NOTIFY_LISTENERS);
       context.getStack().decrement(1);
@@ -66,6 +72,7 @@ public class BoneMealItemMixin {
       info.setReturnValue(ActionResult.SUCCESS);
     }
 
+    // Regrow eaten Solid Grass Block
     if (context.getSide().equals(Direction.UP) && blockState.isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
       if (blockState.get(SolidGrassBlock.EATEN)) {
         world.setBlockState(blockPos, ModBlocks.SOLID_GRASS_BLOCK.getDefaultState(), Block.NOTIFY_LISTENERS);

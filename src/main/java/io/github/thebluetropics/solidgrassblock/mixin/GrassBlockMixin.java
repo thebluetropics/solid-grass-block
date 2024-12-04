@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(GrassBlock.class)
 public class GrassBlockMixin {
+  /// Allows plants to be grown on top of Solid Grass Blocks
   @Redirect(
     method = "grow(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/random/Random;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V",
     at = @At(

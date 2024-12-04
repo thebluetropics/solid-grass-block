@@ -18,6 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(HoeItem.class)
 public class HoeItemMixin {
+  /// Allows Solid Grass Block and Solid Dirt Path to be tilled into a Farmland Block
   @Inject(at = @At("HEAD"), method = "useOnBlock", cancellable = true)
   private void useOnBlock(ItemUsageContext context, CallbackInfoReturnable<ActionResult> info) {
     var world = context.getWorld();
