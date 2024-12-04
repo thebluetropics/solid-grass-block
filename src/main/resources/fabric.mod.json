@@ -3,10 +3,15 @@
   "id": "%mod_id%",
   "version": "%version%",
   "name": "Solid Grass Block",
+  "description": "Adds solid variant of all grass blocks",
   "authors": ["thebluetropics"],
   "license": ["MIT"],
-  "environment": "*",
+  "contact": {
+    "sources": "https://github.com/thebluetropics/solid-grass-block",
+    "issues": "https://github.com/thebluetropics/solid-grass-block/issues"
+  },
   "icon": "assets/%mod_id%/icon.png",
+  "environment": "*",
   "entrypoints": {
     "main": [
       "io.github.thebluetropics.solidgrassblock.SolidGrassBlockMod"
