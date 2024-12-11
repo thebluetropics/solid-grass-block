@@ -96,7 +96,7 @@ public class SolidGrassBlock extends Block implements Fertilizable {
   }
 
   /** Checks whether a regular <b>Grass Block</b> can survive. */
-  private static boolean canGrassBlockSurvive(BlockState blockState, WorldView world, BlockPos blockPos) {
+  public static boolean canGrassBlockSurvive(BlockState blockState, WorldView world, BlockPos blockPos) {
     var upperBlockPos = blockPos.up();
     var upperBlockState = world.getBlockState(upperBlockPos);
 
@@ -119,7 +119,7 @@ public class SolidGrassBlock extends Block implements Fertilizable {
 
   /** Checks whether a <b>Solid Grass Block</b> can survive. */
   @SuppressWarnings("deprecation")
-  private static boolean canSolidGrassBlockSurvive(BlockState blockState, WorldView world, BlockPos blockPos) {
+  public static boolean canSolidGrassBlockSurvive(BlockState blockState, WorldView world, BlockPos blockPos) {
     for (Direction direction : Direction.values()) {
       var checkBlockState = world.getBlockState(blockPos.offset(direction));
 
@@ -131,7 +131,7 @@ public class SolidGrassBlock extends Block implements Fertilizable {
     return false;
   }
 
-  private static boolean canSpread(BlockState blockState, WorldView world, BlockPos blockPos) {
+  public static boolean canSpread(BlockState blockState, WorldView world, BlockPos blockPos) {
     return canGrassBlockSurvive(blockState, world, blockPos) && !world.getFluidState(blockPos.up()).isIn(FluidTags.WATER);
   }
 }
