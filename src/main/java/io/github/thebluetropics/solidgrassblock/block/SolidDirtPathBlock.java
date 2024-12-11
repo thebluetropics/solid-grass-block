@@ -3,6 +3,7 @@ package io.github.thebluetropics.solidgrassblock.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.block.SideShapeType;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
@@ -56,7 +57,7 @@ public class SolidDirtPathBlock extends Block {
 
     return getDefaultState()
       .with(FULL_CUBE, false)
-      .with(CONNECTED, world.getBlockState(upperBlockPos).isSolidBlock(world, upperBlockPos));
+      .with(CONNECTED, world.getBlockState(upperBlockPos).isSideSolid(world, upperBlockPos, Direction.DOWN, SideShapeType.FULL));
   }
 
   @Override
@@ -64,7 +65,7 @@ public class SolidDirtPathBlock extends Block {
     return state
       .with(
         CONNECTED,
-        Objects.equals(direction, Direction.UP) && neighborState.isSolidBlock(world, neighborPos)
+        Objects.equals(direction, Direction.UP) && neighborState.isSideSolid(world, neighborPos, Direction.DOWN, SideShapeType.FULL)
       );
   }
 
