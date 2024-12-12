@@ -11,6 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.chunk.light.ChunkLightProvider;
 
@@ -40,12 +41,6 @@ public class SolidMyceliumBlock extends Block {
   protected void randomTick(BlockState blockState, ServerWorld world, BlockPos blockPos, Random random) {
     var upperBlockPos = blockPos.up();
 
-    if (!canSolidMyceliumSurvive(blockState, world, blockPos)) {
-      world.setBlockState(blockPos, Blocks.DIRT.getDefaultState(), Block.NOTIFY_ALL);
-
-      return;
-    }
-
     if (world.getLightLevel(upperBlockPos.up()) >= 9) {
       var spreadBlockState = Blocks.MYCELIUM.getDefaultState();
 
@@ -60,6 +55,16 @@ public class SolidMyceliumBlock extends Block {
         }
       }
     }
+  }
+
+  /// Force solid mycelium to immediately turn into dirt when it is cannot survive
+  @Override
+  protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+    if (canSolidMyceliumSurvive(state, world, pos)) {
+      return Blocks.DIRT.getDefaultState();
+    }
+
+    return state;
   }
 
   /** Checks whether a regular <b>Mycelium Block</b> can survive. */

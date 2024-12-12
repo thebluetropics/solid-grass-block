@@ -13,6 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.chunk.light.ChunkLightProvider;
 
@@ -35,12 +36,6 @@ public class SolidGrassBlock extends Block implements Fertilizable {
   @Override
   protected void randomTick(BlockState blockState, ServerWorld world, BlockPos blockPos, Random random) {
     var upperBlockPos = blockPos.up();
-
-    if (!canSolidGrassBlockSurvive(blockState, world, blockPos)) {
-      world.setBlockState(blockPos, Blocks.DIRT.getDefaultState(), Block.NOTIFY_ALL);
-
-      return;
-    }
 
     if (world.getLightLevel(upperBlockPos.up()) >= 9) {
       if (blockState.get(EATEN)) {
@@ -88,6 +83,16 @@ public class SolidGrassBlock extends Block implements Fertilizable {
   @Override
   public void grow(ServerWorld world, Random random, BlockPos blockPos, BlockState blockState) {
     ((Fertilizable) Blocks.GRASS_BLOCK).grow(world, random, blockPos, blockState);
+  }
+
+  /// Force solid grass block to immediately turn into dirt when it is cannot survive
+  @Override
+  protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+    if (!canSolidGrassBlockSurvive(state, world, pos)) {
+      return Blocks.DIRT.getDefaultState();
+    }
+
+    return state;
   }
 
   @Override
