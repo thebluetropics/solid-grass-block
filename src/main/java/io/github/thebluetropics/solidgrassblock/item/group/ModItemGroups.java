@@ -15,7 +15,7 @@ public class ModItemGroups {
     "solid_grass_block",
     FabricItemGroup.builder()
       .icon(ModItems.SOLID_GRASS_BLOCK::getDefaultStack)
-      .displayName(Text.translatable("itemGroup.solid_grass_block.solid_grass_block"))
+      .displayName(Text.translatable("itemGroup." + SolidGrassBlockMod.ID +".solid_grass_block"))
       .noScrollbar()
       .entries((context, entries) -> {
         for (Item item : ModItems.toArray()) {
