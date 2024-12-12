@@ -5,5 +5,9 @@
   "block.solid_grass_block.solid_mycelium": "Solid Mycelium",
   "block.solid_grass_block.solid_crimson_nylium": "Solid Crimson Nylium",
   "block.solid_grass_block.solid_warped_nylium": "Solid Warped Nylium",
-  "itemGroup.solid_grass_block.solid_grass_block": "Solid Grass Block"
+  "itemGroup.solid_grass_block.solid_grass_block": "Solid Grass Block",
+
+  "modmenu.nameTranslation.solid_grass_block": "Solid Grass Block",
+  "modmenu.descriptionTranslation.modmenu": "Adds solid variant of all grass blocks",
+  "modmenu.summaryTranslation.modmenu": "Adds solid variant of all grass blocks"
 }
