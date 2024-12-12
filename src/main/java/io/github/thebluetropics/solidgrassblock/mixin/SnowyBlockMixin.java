@@ -1,6 +1,7 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
 import io.github.thebluetropics.solidgrassblock.block.SolidGrassBlock;
+import io.github.thebluetropics.solidgrassblock.block.SolidMyceliumBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SnowyBlock;
@@ -22,8 +23,14 @@ public class SnowyBlockMixin {
     cancellable = true
   )
   private void getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos, CallbackInfoReturnable<BlockState> info) {
-    if (direction.equals(Direction.UP) && !neighborState.isIn(BlockTags.SNOW)) {
+    if (state.isOf(Blocks.GRASS_BLOCK) && direction.equals(Direction.UP) && !neighborState.isIn(BlockTags.SNOW)) {
       if (!SolidGrassBlock.canGrassBlockSurvive(state, world, pos)) {
+        info.setReturnValue(Blocks.DIRT.getDefaultState());
+      }
+    }
+
+    if (state.isOf(Blocks.MYCELIUM) && direction.equals(Direction.UP) && !neighborState.isIn(BlockTags.SNOW)) {
+      if (!SolidMyceliumBlock.canMyceliumSurvive(state, world, pos)) {
         info.setReturnValue(Blocks.DIRT.getDefaultState());
       }
     }
