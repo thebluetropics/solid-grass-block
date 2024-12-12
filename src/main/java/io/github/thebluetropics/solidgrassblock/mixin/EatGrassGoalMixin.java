@@ -50,7 +50,7 @@ public class EatGrassGoalMixin {
     }
   }
 
-  // Set `eaten` block state to `true` after being eaten by mobs
+  /// Set `eaten` block state to `true` after being eaten by mobs
   @Inject(
     method = "tick()V",
     at = @At(
