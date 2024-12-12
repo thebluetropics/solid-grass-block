@@ -10,10 +10,14 @@ import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.util.Identifier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Objects;
 
 public class SolidGrassBlockModClient implements ClientModInitializer {
+  public static final Logger LOGGER = LoggerFactory.getLogger(SolidGrassBlockModClient.class);
+
   @Override
   public void onInitializeClient() {
     ColorProviderRegistry.BLOCK.register(
