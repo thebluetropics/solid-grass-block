@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(GrassBlock.class)
 public class GrassBlockMixin {
-  /// Allows plants to be grown on top of Solid Grass Blocks
+  /// Allows plants to be grown on top of solid grass blocks when using bone meal
   @Redirect(
     method = "grow(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/random/Random;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V",
     at = @At(
@@ -21,11 +21,11 @@ public class GrassBlockMixin {
       ordinal = 0
     )
   )
-  private boolean isOf(BlockState blockState, Block block) {
-    if (blockState.isOf(Blocks.GRASS_BLOCK)) {
+  private boolean isOf(BlockState state, Block block) {
+    if (state.isOf(Blocks.GRASS_BLOCK)) {
       return true;
     }
 
-    return blockState.isOf(ModBlocks.SOLID_GRASS_BLOCK) && !blockState.get(SolidGrassBlock.EATEN);
+    return state.isOf(ModBlocks.SOLID_GRASS_BLOCK) && !state.get(SolidGrassBlock.EATEN);
   }
 }
