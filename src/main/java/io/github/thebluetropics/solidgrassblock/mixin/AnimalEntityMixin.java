@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class AnimalEntityMixin {
   @Inject(
     at = @At("HEAD"),
-    method = "getPathfindingFavor(Let/minecraft/util/math/BlockPos;Lnet/minecraft/world/WorldView;)F",
+    method = "getPathfindingFavor(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/world/WorldView;)F",
     cancellable = true
   )
   private void isOf(BlockPos pos, WorldView world, CallbackInfoReturnable<Float> info) {
