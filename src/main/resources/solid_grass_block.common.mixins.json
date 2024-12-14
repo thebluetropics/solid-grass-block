@@ -10,6 +10,7 @@
     "GrassBlockMixin",
     "HoeItemMixin",
     "NetherrackBlockMixin",
+    "OcelotEntityMixin",
     "ShovelItemMixin",
     "SnowyBlockMixin"
   ],
