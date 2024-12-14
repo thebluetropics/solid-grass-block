@@ -60,7 +60,7 @@ public class SolidMyceliumBlock extends Block {
   /// Force solid mycelium to immediately turn into dirt when it is cannot survive
   @Override
   protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-    if (canSolidMyceliumSurvive(state, world, pos)) {
+    if (!canSolidMyceliumSurvive(state, world, pos)) {
       return Blocks.DIRT.getDefaultState();
     }
 
