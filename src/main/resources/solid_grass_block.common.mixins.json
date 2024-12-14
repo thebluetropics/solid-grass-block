@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "AbstractHorseEntityMixin",
+    "AnimalEntityMixin",
     "BoneMealItemMixin",
     "EatGrassGoalMixin",
     "GrassBlockMixin",
