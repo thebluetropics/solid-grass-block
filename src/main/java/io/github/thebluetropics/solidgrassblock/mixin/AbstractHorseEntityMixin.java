@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(AbstractHorseEntity.class)
 public class AbstractHorseEntityMixin {
+  /// Allows horses to eat solid grass blocks.
   @Redirect(
     method = "tickMovement()V",
     at = @At(
