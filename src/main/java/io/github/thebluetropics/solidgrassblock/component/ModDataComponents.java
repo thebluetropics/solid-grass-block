@@ -9,6 +9,10 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModDataComponents {
+  /**
+   * <b>Solid Grass Block</b> can be eaten by mobs. This <code>EATEN</code> data component is used
+   * for <b>Solid Grass Block</b> item.
+   */
   public static final DataComponentType<Boolean> EATEN = register(
     "eaten",
     DataComponentType.<Boolean>builder()
