@@ -105,6 +105,10 @@ public class SolidGrassBlock extends Block implements Fertilizable {
     var upperBlockPos = blockPos.up();
     var upperBlockState = world.getBlockState(upperBlockPos);
 
+    if (upperBlockState.isOf(Blocks.SNOW) && Objects.equals(upperBlockState.get(SnowBlock.LAYERS), 1)) {
+      return true;
+    }
+
     if (Objects.equals(upperBlockState.getFluidState().getLevel(), 8)) {
       return false;
     }
