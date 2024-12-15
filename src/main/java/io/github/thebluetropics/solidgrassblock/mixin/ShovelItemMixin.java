@@ -25,19 +25,19 @@ public class ShovelItemMixin {
     var blockPos = context.getBlockPos();
     var blockState = context.getWorld().getBlockState(blockPos);
 
-    // Turns into Dirt Path
+    // Turn into solid dirt path
     if (!context.getSide().equals(Direction.DOWN) && BlockStateHelper.isOf(blockState, ModBlocks.SOLID_GRASS_BLOCK, ModBlocks.SOLID_PODZOL, ModBlocks.SOLID_MYCELIUM)) {
       if (world.getBlockState(blockPos.up()).isAir()) {
         if (!world.isClient()) {
           world.setBlockState(
             blockPos,
-            Blocks.DIRT_PATH.getDefaultState(),
+            ModBlocks.SOLID_DIRT_PATH.getDefaultState(),
             Block.NOTIFY_ALL_AND_REDRAW
           );
           world.emitGameEvent(
             GameEvent.BLOCK_CHANGE,
             blockPos,
-            GameEvent.Emitter.of(context.getPlayer(), Blocks.DIRT_PATH.getDefaultState())
+            GameEvent.Emitter.of(context.getPlayer(), ModBlocks.SOLID_DIRT_PATH.getDefaultState())
           );
 
           var player = context.getPlayer();
