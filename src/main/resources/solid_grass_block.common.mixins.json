@@ -15,7 +15,8 @@
     "NetherrackBlockMixin",
     "OcelotEntityMixin",
     "ShovelItemMixin",
-    "SnowyBlockMixin"
+    "SnowyBlockMixin",
+    "TrunkPlacerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
