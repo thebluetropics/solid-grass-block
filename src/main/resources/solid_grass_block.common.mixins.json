@@ -12,6 +12,7 @@
     "HoeItemMixin",
     "HoglinEntityMixin",
     "HugeFungusFeatureMixin",
+    "MooshromEntityMixin",
     "NetherrackBlockMixin",
     "OcelotEntityMixin",
     "ShovelItemMixin",
