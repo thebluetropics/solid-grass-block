@@ -86,11 +86,22 @@ public class SolidMyceliumBlock extends Block {
 
   /** Checks whether a <b>Solid Mycelium Block</b> can survive. */
   @SuppressWarnings("deprecation")
-  public static boolean canSolidMyceliumSurvive(BlockState blockState, WorldView world, BlockPos blockPos) {
+  public static boolean canSolidMyceliumSurvive(BlockState state, WorldView world, BlockPos pos) {
     for (Direction direction : Direction.values()) {
-      var checkBlockState = world.getBlockState(blockPos.offset(direction));
+      var checkPos = pos.offset(direction);
+      var checkState = world.getBlockState(pos.offset(direction));
 
-      if (!checkBlockState.isSolid()) {
+      int realisticOpacity = ChunkLightProvider.getRealisticOpacity(
+        world,
+        state,
+        pos,
+        checkState,
+        checkPos,
+        direction,
+        checkState.getOpacity(world, checkPos)
+      );
+
+      if (realisticOpacity < world.getMaxLightLevel() && checkState.getFluidState().getLevel() < 8) {
         return true;
       }
     }

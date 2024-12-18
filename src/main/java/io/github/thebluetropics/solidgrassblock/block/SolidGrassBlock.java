@@ -126,11 +126,22 @@ public class SolidGrassBlock extends Block implements Fertilizable {
 
   /** Checks whether a <b>Solid Grass Block</b> can survive. */
   @SuppressWarnings("deprecation")
-  public static boolean canSolidGrassBlockSurvive(BlockState blockState, WorldView world, BlockPos blockPos) {
+  public static boolean canSolidGrassBlockSurvive(BlockState state, WorldView world, BlockPos pos) {
     for (Direction direction : Direction.values()) {
-      var checkBlockState = world.getBlockState(blockPos.offset(direction));
+      var checkPos = pos.offset(direction);
+      var checkState = world.getBlockState(pos.offset(direction));
 
-      if (!checkBlockState.isSolid()) {
+      int realisticOpacity = ChunkLightProvider.getRealisticOpacity(
+        world,
+        state,
+        pos,
+        checkState,
+        checkPos,
+        direction,
+        checkState.getOpacity(world, checkPos)
+      );
+
+      if (realisticOpacity < world.getMaxLightLevel() && checkState.getFluidState().getLevel() < 8) {
         return true;
       }
     }

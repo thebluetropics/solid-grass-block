@@ -99,9 +99,19 @@ public class SolidNyliumBlock extends Block implements Fertilizable {
   private static boolean canSolidNyliumSurvive(BlockState state, WorldView world, BlockPos pos) {
     for (Direction direction : Direction.values()) {
       var checkPos = pos.offset(direction);
-      var checkState = world.getBlockState(checkPos);
+      var checkState = world.getBlockState(pos.offset(direction));
 
-      if (!checkState.isSolidBlock(world, checkPos)) {
+      int realisticOpacity = ChunkLightProvider.getRealisticOpacity(
+        world,
+        state,
+        pos,
+        checkState,
+        checkPos,
+        direction,
+        checkState.getOpacity(world, checkPos)
+      );
+
+      if (realisticOpacity < world.getMaxLightLevel() && checkState.getFluidState().getLevel() < 8) {
         return true;
       }
     }
