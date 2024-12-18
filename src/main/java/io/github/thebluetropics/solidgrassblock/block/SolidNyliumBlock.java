@@ -60,14 +60,7 @@ public class SolidNyliumBlock extends Block implements Fertilizable {
     }
   }
 
-  private void generate(
-    Registry<ConfiguredFeature<?, ?>> registry,
-    RegistryKey<ConfiguredFeature<?, ?>> key,
-    ServerWorld world,
-    ChunkGenerator chunkGenerator,
-    Random random,
-    BlockPos pos
-  ) {
+  private void generate(Registry<ConfiguredFeature<?, ?>> registry, RegistryKey<ConfiguredFeature<?, ?>> key, ServerWorld world, ChunkGenerator chunkGenerator, Random random, BlockPos pos) {
     registry.getEntry(key).ifPresent(entry -> entry.value().generate(world, chunkGenerator, random, pos));
   }
 }
