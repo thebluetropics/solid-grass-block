@@ -1,36 +1,92 @@
 {
   "multipart": [
     {
-      "apply": {
-        "model": "solid_grass_block:block/solid_dirt_path"
-      },
+      "apply": [
+        {
+          "model": "solid_grass_block:block/solid_dirt_path"
+        },
+        {
+          "model": "solid_grass_block:block/solid_dirt_path",
+          "y": 90
+        },
+        {
+          "model": "solid_grass_block:block/solid_dirt_path",
+          "y": 180
+        },
+        {
+          "model": "solid_grass_block:block/solid_dirt_path",
+          "y": 270
+        }
+      ],
       "when": {
         "full_cube": false,
         "connected": false
       }
     },
     {
-      "apply": {
-        "model": "solid_grass_block:block/solid_dirt_path_full_cube"
-      },
+      "apply": [
+        {
+          "model": "solid_grass_block:block/solid_dirt_path_full_cube"
+        },
+        {
+          "model": "solid_grass_block:block/solid_dirt_path_full_cube",
+          "y": 90
+        },
+        {
+          "model": "solid_grass_block:block/solid_dirt_path_full_cube",
+          "y": 180
+        },
+        {
+          "model": "solid_grass_block:block/solid_dirt_path_full_cube",
+          "y": 270
+        }
+      ],
       "when": {
         "full_cube": true,
         "connected": false
       }
     },
     {
-      "apply": {
-        "model": "solid_grass_block:block/solid_dirt_path_full_cube"
-      },
+      "apply": [
+        {
+          "model": "solid_grass_block:block/solid_dirt_path_full_cube"
+        },
+        {
+          "model": "solid_grass_block:block/solid_dirt_path_full_cube",
+          "y": 90
+        },
+        {
+          "model": "solid_grass_block:block/solid_dirt_path_full_cube",
+          "y": 180
+        },
+        {
+          "model": "solid_grass_block:block/solid_dirt_path_full_cube",
+          "y": 270
+        }
+      ],
       "when": {
         "full_cube": false,
         "connected": true
       }
     },
     {
-      "apply": {
-        "model": "solid_grass_block:block/solid_dirt_path_full_cube"
-      },
+      "apply": [
+        {
+          "model": "solid_grass_block:block/solid_dirt_path_full_cube"
+        },
+        {
+          "model": "solid_grass_block:block/solid_dirt_path_full_cube",
+          "y": 90
+        },
+        {
+          "model": "solid_grass_block:block/solid_dirt_path_full_cube",
+          "y": 180
+        },
+        {
+          "model": "solid_grass_block:block/solid_dirt_path_full_cube",
+          "y": 270
+        }
+      ],
       "when": {
         "full_cube": true,
         "connected": true
