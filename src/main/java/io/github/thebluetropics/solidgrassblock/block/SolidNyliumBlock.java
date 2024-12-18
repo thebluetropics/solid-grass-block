@@ -10,9 +10,11 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
+import net.minecraft.world.chunk.light.ChunkLightProvider;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.NetherConfiguredFeatures;
@@ -62,5 +64,48 @@ public class SolidNyliumBlock extends Block implements Fertilizable {
 
   private void generate(Registry<ConfiguredFeature<?, ?>> registry, RegistryKey<ConfiguredFeature<?, ?>> key, ServerWorld world, ChunkGenerator chunkGenerator, Random random, BlockPos pos) {
     registry.getEntry(key).ifPresent(entry -> entry.value().generate(world, chunkGenerator, random, pos));
+  }
+
+  @Override
+  protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    if (!canSolidNyliumSurvive(state, world, pos)) {
+      world.setBlockState(pos, Blocks.NETHERRACK.getDefaultState());
+    }
+  }
+
+  /**
+   * Checks whether a <b>Nylium</b> block can survive.
+   */
+  private static boolean canNyliumSurvive(BlockState state, WorldView world, BlockPos pos) {
+    var upperPos = pos.up();
+    var upperState = world.getBlockState(upperPos);
+
+    int realisticOpacity = ChunkLightProvider.getRealisticOpacity(
+      world,
+      state,
+      pos,
+      upperState,
+      upperPos,
+      Direction.UP,
+      upperState.getOpacity(world, upperPos)
+    );
+
+    return realisticOpacity < world.getMaxLightLevel();
+  }
+
+  /**
+   * Checks whether a <b>Solid Nylium</b> block can survive.
+   */
+  private static boolean canSolidNyliumSurvive(BlockState state, WorldView world, BlockPos pos) {
+    for (Direction direction : Direction.values()) {
+      var checkPos = pos.offset(direction);
+      var checkState = world.getBlockState(checkPos);
+
+      if (!checkState.isSolidBlock(world, checkPos)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 }
