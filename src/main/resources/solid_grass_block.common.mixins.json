@@ -17,7 +17,6 @@
     "NyliumBlockMixin",
     "OcelotEntityMixin",
     "ShovelItemMixin",
-    "SnowyBlockMixin",
     "TrunkPlacerMixin"
   ],
   "injectors": {
