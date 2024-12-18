@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -60,6 +61,7 @@ public class ModItems {
     )
   );
 
+  @ApiStatus.Internal
   public static <T extends Item> T register(String id, T item) {
     Registry.register(Registries.ITEM, new Identifier(SolidGrassBlockMod.ID, id), item);
 
@@ -76,5 +78,6 @@ public class ModItems {
     return new HashSet<>(items);
   }
 
+  @ApiStatus.Internal
   public static void initialize() { /* ... */ }
 }

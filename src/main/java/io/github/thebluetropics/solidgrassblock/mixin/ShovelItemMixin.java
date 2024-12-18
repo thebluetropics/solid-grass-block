@@ -52,7 +52,7 @@ public class ShovelItemMixin {
       }
     }
 
-    // Turns Dirt Path into Solid Dirt Path
+    // Turn dirt path into solid dirt path
     if (!context.getSide().equals(Direction.UP) && blockState.isOf(Blocks.DIRT_PATH)) {
       world.setBlockState(
         blockPos,
@@ -75,7 +75,7 @@ public class ShovelItemMixin {
       info.setReturnValue(ActionResult.success(world.isClient));
     }
 
-    // Cycle `full_cube` block state for Solid Dirt Path
+    // Cycle `full_cube` block state for solid dirt path
     if (context.getSide().equals(Direction.UP) && blockState.isOf(ModBlocks.SOLID_DIRT_PATH)) {
       var newBlockState = blockState.with(SolidDirtPathBlock.FULL_CUBE, !blockState.get(SolidDirtPathBlock.FULL_CUBE));
 

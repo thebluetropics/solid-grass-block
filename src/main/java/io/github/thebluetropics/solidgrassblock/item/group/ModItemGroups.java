@@ -9,6 +9,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.ApiStatus;
 
 public class ModItemGroups {
   public static final ItemGroup SOLID_GRASS_BLOCK = register(
@@ -25,9 +26,11 @@ public class ModItemGroups {
       .build()
   );
 
+  @ApiStatus.Internal
   public static <T extends ItemGroup> T register(String id, T itemGroup) {
     return Registry.register(Registries.ITEM_GROUP, Identifier.of(SolidGrassBlockMod.ID, id), itemGroup);
   }
 
+  @ApiStatus.Internal
   public static void initialize() { /* ... */ }
 }

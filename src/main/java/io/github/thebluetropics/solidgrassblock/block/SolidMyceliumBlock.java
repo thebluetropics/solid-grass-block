@@ -62,7 +62,9 @@ public class SolidMyceliumBlock extends Block {
     }
   }
 
-  /** Checks whether a regular <b>Mycelium Block</b> can survive. */
+  /**
+   * Checks whether a mycelium block can survive.
+   */
   public static boolean canMyceliumSurvive(BlockState blockState, WorldView world, BlockPos blockPos) {
     var upperBlockPos = blockPos.up();
     var upperBlockState = world.getBlockState(upperBlockPos);
@@ -84,7 +86,9 @@ public class SolidMyceliumBlock extends Block {
     return lightLevel < world.getMaxLightLevel();
   }
 
-  /** Checks whether a <b>Solid Mycelium Block</b> can survive. */
+  /**
+   * Checks whether a solid mycelium block can survive.
+   */
   @SuppressWarnings("deprecation")
   public static boolean canSolidMyceliumSurvive(BlockState state, WorldView world, BlockPos pos) {
     for (Direction direction : Direction.values()) {
@@ -109,6 +113,9 @@ public class SolidMyceliumBlock extends Block {
     return false;
   }
 
+  /**
+   * Checks whether a mycelium block can spread.
+   */
   public static boolean canSpread(BlockState blockState, WorldView world, BlockPos blockPos) {
     return canMyceliumSurvive(blockState, world, blockPos) && !world.getFluidState(blockPos.up()).isIn(FluidTags.WATER);
   }

@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(OcelotEntity.class)
 public class OcelotEntityMixin {
-  /// Allows Ocelots to spawn on top of a Solid Grass Block.
+  /// Allows ocelot to spawn on top of a solid grass block.
   @SuppressWarnings("DataFlowIssue")
   @Inject(
     at = @At(

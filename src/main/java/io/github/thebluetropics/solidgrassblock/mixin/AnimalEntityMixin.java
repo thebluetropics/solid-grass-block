@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AnimalEntity.class)
 public class AnimalEntityMixin {
-  /// Allows animals to favor Solid Grass Block for pathfinding.
+  /// Allows animals to favor solid grass block for pathfinding.
   @Inject(
     at = @At("HEAD"),
     method = "getPathfindingFavor(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/world/WorldView;)F",

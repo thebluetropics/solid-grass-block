@@ -10,6 +10,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.ApiStatus;
 
 public class ModBlocks {
   public static final Block SOLID_GRASS_BLOCK = register(
@@ -77,9 +78,11 @@ public class ModBlocks {
     )
   );
 
+  @ApiStatus.Internal
   public static <T extends Block> T register(String id, T block) {
     return Registry.register(Registries.BLOCK, new Identifier(SolidGrassBlockMod.ID, id), block);
   }
 
+  @ApiStatus.Internal
   public static void initialize() { /* ... */ }
 }
