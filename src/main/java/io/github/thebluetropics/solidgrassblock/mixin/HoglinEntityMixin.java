@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(HoglinEntity.class)
 public class HoglinEntityMixin {
+  /// Allows Hoglin to favor Solid Crimson Nylium for pathfinding.
   @Inject(
     at = @At(
       value = "RETURN",

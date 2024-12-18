@@ -29,7 +29,7 @@ public class EatGrassGoalMixin {
   @Shadow
   private World world;
 
-  /// Allows mobs to start eating Solid Grass Block
+  /// Allows mobs to start eating Solid Grass Block.
   @Inject(
     method = "canStart()Z",
     at = @At(
@@ -50,7 +50,7 @@ public class EatGrassGoalMixin {
     }
   }
 
-  /// Set `eaten` block state to `true` after being eaten by mobs
+  /// Set `eaten` block state to `true` after being eaten by mobs.
   @Inject(
     method = "tick()V",
     at = @At(

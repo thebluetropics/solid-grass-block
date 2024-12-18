@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SnowyBlock.class)
 public class SnowyBlockMixin {
-  /// Force grass block to immediately turn into dirt when there's a solid block on top of it.
+  /// Force Grass Block to immediately turn into dirt when there's a solid block on top of it.
   @Inject(
     at = @At("HEAD"),
     method = "getStateForNeighborUpdate",

@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MooshroomEntity.class)
 public class MooshromEntityMixin {
+  /// Allows Mooshroom to favor Solid Mycelium for pathfinding.
   @Inject(
     at = @At("HEAD"),
     method = "getPathfindingFavor",

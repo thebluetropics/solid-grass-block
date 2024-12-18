@@ -20,6 +20,9 @@ import net.minecraft.world.chunk.light.ChunkLightProvider;
 import java.util.Objects;
 
 public class SolidGrassBlock extends Block implements Fertilizable {
+  /**
+   * Indicates whether a <b>Solid Grass Block</b> has been eaten by mobs.
+   */
   public static final BooleanProperty EATEN = BooleanProperty.of("eaten");
 
   public SolidGrassBlock(Settings settings) {
@@ -85,7 +88,7 @@ public class SolidGrassBlock extends Block implements Fertilizable {
     ((Fertilizable) Blocks.GRASS_BLOCK).grow(world, random, blockPos, blockState);
   }
 
-  /// Force solid grass block to immediately turn into dirt when it is cannot survive
+  /// Force solid grass block to immediately turn into dirt when it is cannot survive.
   @Override
   protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
     if (!canSolidGrassBlockSurvive(state, world, pos)) {
