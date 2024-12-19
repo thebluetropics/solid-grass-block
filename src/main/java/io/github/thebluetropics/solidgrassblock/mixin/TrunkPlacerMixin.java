@@ -1,6 +1,7 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
+import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.trunk.TrunkPlacer;
@@ -21,6 +22,10 @@ public class TrunkPlacerMixin {
     cancellable = true
   )
   private static void canGenerate(TestableWorld world, BlockPos pos, CallbackInfoReturnable<Boolean> info) {
+    if (!world.testBlockState(pos, state -> isSoil(state) && !state.isIn(ModBlockTags.GRASS_BLOCK))) {
+      info.setReturnValue(false);
+    }
+
     if (!world.testBlockState(pos, state -> isSoil(state) && !isOf(state, ModBlocks.SOLID_GRASS_BLOCK, ModBlocks.SOLID_MYCELIUM))) {
       info.setReturnValue(false);
     }

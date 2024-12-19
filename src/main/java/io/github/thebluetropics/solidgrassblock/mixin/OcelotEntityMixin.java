@@ -1,6 +1,7 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
+import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
 import net.minecraft.entity.passive.OcelotEntity;
 import net.minecraft.world.WorldView;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,6 +24,10 @@ public class OcelotEntityMixin {
   )
   private void canSpawn(WorldView world, CallbackInfoReturnable<Boolean> info) {
     OcelotEntity entity = (OcelotEntity) (Object) this;
+
+    if (world.getBlockState(entity.getBlockPos().down()).isIn(ModBlockTags.GRASS_BLOCK)) {
+      info.setReturnValue(true);
+    }
 
     if (world.getBlockState(entity.getBlockPos().down()).isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
       info.setReturnValue(true);

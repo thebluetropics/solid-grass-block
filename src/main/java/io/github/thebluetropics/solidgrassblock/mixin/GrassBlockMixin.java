@@ -2,6 +2,7 @@ package io.github.thebluetropics.solidgrassblock.mixin;
 
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
 import io.github.thebluetropics.solidgrassblock.block.SolidGrassBlock;
+import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -26,6 +27,10 @@ public class GrassBlockMixin {
       return true;
     }
 
-    return state.isOf(ModBlocks.SOLID_GRASS_BLOCK) && !state.get(SolidGrassBlock.EATEN);
+    if (state.isOf(ModBlocks.SOLID_GRASS_BLOCK) && !state.get(SolidGrassBlock.EATEN)) {
+      return true;
+    }
+
+    return state.isIn(ModBlockTags.GRASS_BLOCK);
   }
 }

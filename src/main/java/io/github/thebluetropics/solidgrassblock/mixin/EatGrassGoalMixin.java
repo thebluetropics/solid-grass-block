@@ -2,6 +2,7 @@ package io.github.thebluetropics.solidgrassblock.mixin;
 
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
 import io.github.thebluetropics.solidgrassblock.block.SolidGrassBlock;
+import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -44,6 +45,10 @@ public class EatGrassGoalMixin {
     if (!SHORT_GRASS_PREDICATE.test(this.world.getBlockState(blockPos))) {
       var lowerBlockState = this.world.getBlockState(blockPos.down());
 
+      if (lowerBlockState.isIn(ModBlockTags.GRASS_BLOCK)) {
+        info.setReturnValue(true);
+      }
+
       if (lowerBlockState.isOf(ModBlocks.SOLID_GRASS_BLOCK) && !lowerBlockState.get(SolidGrassBlock.EATEN)) {
         info.setReturnValue(true);
       }
@@ -66,6 +71,15 @@ public class EatGrassGoalMixin {
     if (blockState.isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
       if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
         this.world.setBlockState(blockPos, blockState.with(SolidGrassBlock.EATEN, true), Block.NOTIFY_LISTENERS);
+      }
+
+      this.mob.onEatingGrass();
+      info.cancel();
+    }
+
+    if (blockState.isIn(ModBlockTags.GRASS_BLOCK)) {
+      if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
+        this.world.setBlockState(blockPos, Blocks.DIRT.getDefaultState(), Block.NOTIFY_LISTENERS);
       }
 
       this.mob.onEatingGrass();

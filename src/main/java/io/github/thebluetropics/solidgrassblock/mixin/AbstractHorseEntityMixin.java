@@ -2,6 +2,7 @@ package io.github.thebluetropics.solidgrassblock.mixin;
 
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
 import io.github.thebluetropics.solidgrassblock.block.SolidGrassBlock;
+import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -12,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(AbstractHorseEntity.class)
 public class AbstractHorseEntityMixin {
-  /// Allows horses to eat solid grass blocks.
+  /// Allows horses to eat solid grass blocks and custom grass blocks.
   @Redirect(
     method = "tickMovement()V",
     at = @At(
@@ -26,6 +27,10 @@ public class AbstractHorseEntityMixin {
       return true;
     }
 
-    return state.isOf(ModBlocks.SOLID_GRASS_BLOCK) && !state.get(SolidGrassBlock.EATEN);
+    if (state.isOf(ModBlocks.SOLID_GRASS_BLOCK) && !state.get(SolidGrassBlock.EATEN)) {
+      return true;
+    }
+
+    return state.isIn(ModBlockTags.GRASS_BLOCK);
   }
 }

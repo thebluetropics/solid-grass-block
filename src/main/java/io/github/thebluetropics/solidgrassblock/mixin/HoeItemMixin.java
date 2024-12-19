@@ -2,6 +2,7 @@ package io.github.thebluetropics.solidgrassblock.mixin;
 
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
 import io.github.thebluetropics.solidgrassblock.helper.BlockStateHelper;
+import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
@@ -25,8 +26,9 @@ public class HoeItemMixin {
     var player = context.getPlayer();
 
     var blockPos = context.getBlockPos();
+    var blockState = world.getBlockState(blockPos);
 
-    if (BlockStateHelper.isOf(world.getBlockState(blockPos), ModBlocks.SOLID_GRASS_BLOCK, ModBlocks.SOLID_DIRT_PATH)) {
+    if (BlockStateHelper.isOf(blockState, ModBlocks.SOLID_GRASS_BLOCK, ModBlocks.SOLID_DIRT_PATH)) {
       if (HoeItem.canTillFarmland(context)) {
         world.playSound(player, blockPos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
 
@@ -41,6 +43,25 @@ public class HoeItemMixin {
             blockPos,
             GameEvent.Emitter.of(player, Blocks.FARMLAND.getDefaultState())
           );
+
+          var stack = context.getStack();
+
+          if (player != null) {
+            stack.damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
+          }
+        }
+
+        info.setReturnValue(ActionResult.success(world.isClient));
+      }
+    }
+
+    if (blockState.isIn(ModBlockTags.GRASS_BLOCK)) {
+      if (HoeItem.canTillFarmland(context)) {
+        world.playSound(player, blockPos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
+
+        if (!world.isClient()) {
+          world.setBlockState(blockPos, Blocks.FARMLAND.getDefaultState(), Block.NOTIFY_ALL_AND_REDRAW);
+          world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(player, Blocks.FARMLAND.getDefaultState()));
 
           var stack = context.getStack();
 
