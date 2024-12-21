@@ -1,10 +1,12 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
+import io.github.thebluetropics.solidgrassblock.api.block.ModifiedGrassBlock;
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
 import io.github.thebluetropics.solidgrassblock.block.SolidDirtPathBlock;
 import io.github.thebluetropics.solidgrassblock.helper.BlockStateHelper;
 import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemUsageContext;
@@ -56,11 +58,17 @@ public class ShovelItemMixin {
     if (blockState.isIn(ModBlockTags.GRASS_BLOCK)) {
       if (world.getBlockState(blockPos.up()).isAir()) {
         if (!world.isClient()) {
-          world.setBlockState(blockPos, Blocks.DIRT_PATH.getDefaultState(), Block.NOTIFY_ALL_AND_REDRAW);
+          BlockState pathState = Blocks.DIRT_PATH.getDefaultState();
+
+          if (blockState.getBlock() instanceof ModifiedGrassBlock block) {
+            pathState = block.getPathState();
+          }
+
+          world.setBlockState(blockPos, pathState, Block.NOTIFY_ALL_AND_REDRAW);
           world.emitGameEvent(
             GameEvent.BLOCK_CHANGE,
             blockPos,
-            GameEvent.Emitter.of(context.getPlayer(), Blocks.DIRT_PATH.getDefaultState())
+            GameEvent.Emitter.of(context.getPlayer(), pathState)
           );
 
           var player = context.getPlayer();
