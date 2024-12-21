@@ -135,6 +135,7 @@ public class ModifiedGrassBlock extends Block implements Fertilizable {
     return true;
   }
 
+  /// Note: this method calls the vanilla implementation and should not be changed unless you know what you are doing.
   @Override
   public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
     ((Fertilizable) Blocks.GRASS_BLOCK).grow(world, random, pos, state);
