@@ -105,7 +105,7 @@ public class ModifiedGrassBlock extends Block implements Fertilizable {
   /**
    * Spreading logic.
    */
-  protected void spread(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+  public void spread(BlockState state, ServerWorld world, BlockPos pos, Random random) {
     var spreadState = this.getSpreadState();
 
     for (int i = 0; i < 4; i++) {
