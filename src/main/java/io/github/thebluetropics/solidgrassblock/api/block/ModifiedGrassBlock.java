@@ -88,7 +88,8 @@ public class ModifiedGrassBlock extends Block implements Fertilizable {
     var upperBlockPos = pos.up();
 
     if (!this.canSurvive(state, world, pos)) {
-      world.setBlockState(pos, Blocks.DIRT.getDefaultState(), Block.NOTIFY_ALL);
+      world.setBlockState(pos, this.getDieState(), Block.NOTIFY_ALL);
+
       return;
     }
 
