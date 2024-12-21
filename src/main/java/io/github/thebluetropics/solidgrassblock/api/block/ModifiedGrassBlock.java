@@ -3,6 +3,7 @@ package io.github.thebluetropics.solidgrassblock.api.block;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -54,7 +55,7 @@ public class ModifiedGrassBlock extends Block implements Fertilizable {
   }
 
   public boolean canSpread(BlockState state, WorldView world, BlockPos pos) {
-    return true;
+    return this.canSurvive(state, world, pos) && !world.getFluidState(pos.up()).isIn(FluidTags.WATER);
   }
 
   public boolean canSurvive(BlockState state, WorldView world, BlockPos pos) {
@@ -111,7 +112,7 @@ public class ModifiedGrassBlock extends Block implements Fertilizable {
     for (int i = 0; i < 4; i++) {
       var targetPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
 
-      if (world.getBlockState(targetPos).isOf(Blocks.DIRT) && canSpread(spreadState, world, targetPos)) {
+      if (world.getBlockState(targetPos).isOf(Blocks.DIRT) && this.canSpread(spreadState, world, targetPos)) {
         world.setBlockState(
           targetPos,
           spreadState.with(SnowyBlock.SNOWY, world.getBlockState(targetPos.up()).isOf(Blocks.SNOW))
