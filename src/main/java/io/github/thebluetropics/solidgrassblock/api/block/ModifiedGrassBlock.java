@@ -45,6 +45,10 @@ public class ModifiedGrassBlock extends Block implements Fertilizable {
     return Blocks.FARMLAND.getDefaultState();
   }
 
+  public BlockState getSpreadState() {
+    return this.getDefaultState();
+  }
+
   public boolean canSpread(BlockState state, WorldView world, BlockPos pos) {
     return true;
   }
@@ -97,7 +101,7 @@ public class ModifiedGrassBlock extends Block implements Fertilizable {
    * Spreading logic.
    */
   protected void spread(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-    var spreadState = this.getDefaultState();
+    var spreadState = this.getSpreadState();
 
     for (int i = 0; i < 4; i++) {
       var targetPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
