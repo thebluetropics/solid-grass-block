@@ -1,5 +1,6 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
+import io.github.thebluetropics.solidgrassblock.api.block.ModifiedGrassBlock;
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
 import io.github.thebluetropics.solidgrassblock.block.SolidGrassBlock;
 import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
@@ -77,9 +78,15 @@ public class EatGrassGoalMixin {
       info.cancel();
     }
 
+    // For custom grass blocks
     if (blockState.isIn(ModBlockTags.GRASS_BLOCK)) {
+
       if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
-        this.world.setBlockState(blockPos, Blocks.DIRT.getDefaultState(), Block.NOTIFY_LISTENERS);
+        if (blockState.getBlock() instanceof ModifiedGrassBlock block) {
+          this.world.setBlockState(blockPos, block.getEatenState(), Block.NOTIFY_LISTENERS);
+        } else {
+          this.world.setBlockState(blockPos, Blocks.DIRT.getDefaultState(), Block.NOTIFY_LISTENERS);
+        }
       }
 
       this.mob.onEatingGrass();

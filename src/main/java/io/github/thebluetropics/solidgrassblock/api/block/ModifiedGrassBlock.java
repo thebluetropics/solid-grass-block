@@ -33,6 +33,10 @@ public class ModifiedGrassBlock extends Block implements Fertilizable {
     }
   }
 
+  public BlockState getEatenState() {
+    return Blocks.DIRT.getDefaultState();
+  }
+
   public BlockState getTilledState() {
     return Blocks.FARMLAND.getDefaultState();
   }
