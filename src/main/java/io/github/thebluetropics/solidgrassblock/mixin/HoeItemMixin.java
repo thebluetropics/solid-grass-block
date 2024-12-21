@@ -1,9 +1,11 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
+import io.github.thebluetropics.solidgrassblock.api.block.ModifiedGrassBlock;
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
 import io.github.thebluetropics.solidgrassblock.helper.BlockStateHelper;
 import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.HoeItem;
@@ -60,7 +62,13 @@ public class HoeItemMixin {
         world.playSound(player, blockPos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
 
         if (!world.isClient()) {
-          world.setBlockState(blockPos, Blocks.FARMLAND.getDefaultState(), Block.NOTIFY_ALL_AND_REDRAW);
+          BlockState tilledState = Blocks.FARMLAND.getDefaultState();
+
+          if (blockState.getBlock() instanceof ModifiedGrassBlock block) {
+            tilledState = block.getTilledState();
+          }
+
+          world.setBlockState(blockPos, tilledState, Block.NOTIFY_ALL_AND_REDRAW);
           world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(player, Blocks.FARMLAND.getDefaultState()));
 
           var stack = context.getStack();
