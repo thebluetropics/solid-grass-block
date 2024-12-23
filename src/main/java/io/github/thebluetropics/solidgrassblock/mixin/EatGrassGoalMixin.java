@@ -43,11 +43,11 @@ public class EatGrassGoalMixin {
 
     if (!SHORT_GRASS_PREDICATE.test(this.world.getBlockState(blockPos))) {
       var lowerBlockPos = blockPos.down();
-      var lowerBlockState = this.world.getBlockState(blockPos.down());
+      var lowerBlockState = this.world.getBlockState(lowerBlockPos);
 
       if (lowerBlockState.isIn(ModBlockTags.GRASS_BLOCK)) {
         if (lowerBlockState.getBlock() instanceof ModifiedGrassBlock block) {
-          info.setReturnValue(block.canMobsEat(lowerBlockState, this.world, lowerBlockPos));
+          info.setReturnValue(block.canMobsEat(lowerBlockState));
         }
 
         info.setReturnValue(true);

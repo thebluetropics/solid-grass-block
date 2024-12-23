@@ -62,7 +62,7 @@ public class ModifiedGrassBlock extends Block implements Fertilizable {
     return true;
   }
 
-  public boolean canMobsEat(BlockState state, WorldView world, BlockPos pos) {
+  public boolean canMobsEat(BlockState state) {
     return true;
   }
 
