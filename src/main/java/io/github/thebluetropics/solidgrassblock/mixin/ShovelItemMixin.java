@@ -1,6 +1,7 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
 import io.github.thebluetropics.solidgrassblock.api.block.ModifiedGrassBlock;
+import io.github.thebluetropics.solidgrassblock.api.block.ModifiedPodzolBlock;
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
 import io.github.thebluetropics.solidgrassblock.block.SolidDirtPathBlock;
 import io.github.thebluetropics.solidgrassblock.helper.BlockStateHelper;
@@ -29,7 +30,7 @@ public class ShovelItemMixin {
     var blockState = context.getWorld().getBlockState(blockPos);
 
     // Turn into solid dirt path
-    if (!context.getSide().equals(Direction.DOWN) && BlockStateHelper.isOf(blockState, ModBlocks.SOLID_GRASS_BLOCK, ModBlocks.SOLID_PODZOL, ModBlocks.SOLID_MYCELIUM)) {
+    if (!context.getSide().equals(Direction.DOWN) && BlockStateHelper.isOf(blockState, ModBlocks.SOLID_GRASS_BLOCK, ModBlocks.SOLID_MYCELIUM)) {
       if (world.getBlockState(blockPos.up()).isAir()) {
         if (!world.isClient()) {
           world.setBlockState(
@@ -48,6 +49,26 @@ public class ShovelItemMixin {
 
           if (player != null) {
             stack.damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
+          }
+        }
+
+        info.setReturnValue(ActionResult.success(world.isClient));
+      }
+    }
+
+    // Turn custom podzol block into dirt path.
+    if (blockState.getBlock() instanceof ModifiedPodzolBlock block) {
+      if (world.getBlockState(blockPos.up()).isAir()) {
+        if (!world.isClient) {
+          var pathState = block.getPathState();
+
+          world.setBlockState(blockPos, ModBlocks.SOLID_DIRT_PATH.getDefaultState(), Block.NOTIFY_ALL_AND_REDRAW);
+          world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(context.getPlayer(), ModBlocks.SOLID_DIRT_PATH.getDefaultState()));
+
+          var player = context.getPlayer();
+
+          if (player != null) {
+            context.getStack().damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
           }
         }
 
