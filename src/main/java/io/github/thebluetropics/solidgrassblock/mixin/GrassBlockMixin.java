@@ -1,7 +1,6 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
-import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
-import io.github.thebluetropics.solidgrassblock.block.SolidGrassBlock;
+import io.github.thebluetropics.solidgrassblock.api.block.ModifiedGrassBlock;
 import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -22,13 +21,15 @@ public class GrassBlockMixin {
       ordinal = 0
     )
   )
-  private boolean isOf(BlockState state, Block block) {
+  private boolean isOf(BlockState state, Block p_block) {
     if (state.isOf(Blocks.GRASS_BLOCK)) {
       return true;
     }
 
-    if (state.isOf(ModBlocks.SOLID_GRASS_BLOCK) && !state.get(SolidGrassBlock.EATEN)) {
-      return true;
+    if (state.isIn(ModBlockTags.GRASS_BLOCK) && state.getBlock() instanceof ModifiedGrassBlock block) {
+      if (block.canFertilizerGrowPlants(state)) {
+        return true;
+      }
     }
 
     return state.isIn(ModBlockTags.GRASS_BLOCK);

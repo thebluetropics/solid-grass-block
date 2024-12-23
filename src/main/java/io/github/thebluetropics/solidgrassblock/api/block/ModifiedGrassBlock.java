@@ -54,6 +54,22 @@ public class ModifiedGrassBlock extends Block implements Fertilizable {
     return this.getDefaultState();
   }
 
+  public boolean canFertilizerGrowPlants(BlockState state) {
+    return true;
+  }
+
+  public boolean canAnimalPathfindingFavor(BlockState state, WorldView world, BlockPos pos) {
+    return true;
+  }
+
+  public boolean canMobsEat(BlockState state, WorldView world, BlockPos pos) {
+    return true;
+  }
+
+  public boolean canOcelotSpawn(BlockState state, WorldView world, BlockPos pos) {
+    return true;
+  }
+
   public boolean canSpread(BlockState state, WorldView world, BlockPos pos) {
     return this.canSurvive(state, world, pos) && !world.getFluidState(pos.up()).isIn(FluidTags.WATER);
   }

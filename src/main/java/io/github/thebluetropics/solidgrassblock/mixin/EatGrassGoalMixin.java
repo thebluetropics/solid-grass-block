@@ -1,8 +1,6 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
 import io.github.thebluetropics.solidgrassblock.api.block.ModifiedGrassBlock;
-import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
-import io.github.thebluetropics.solidgrassblock.block.SolidGrassBlock;
 import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -31,7 +29,7 @@ public class EatGrassGoalMixin {
   @Shadow
   private World world;
 
-  /// Allows mobs to start eating solid grass block.
+  /// Allow mobs to start eating custom grass blocks.
   @Inject(
     method = "canStart()Z",
     at = @At(
@@ -41,16 +39,17 @@ public class EatGrassGoalMixin {
     cancellable = true
   )
   private void canStart(CallbackInfoReturnable<Boolean> info) {
-    final var blockPos = this.mob.getBlockPos();
+    var blockPos = this.mob.getBlockPos();
 
     if (!SHORT_GRASS_PREDICATE.test(this.world.getBlockState(blockPos))) {
+      var lowerBlockPos = blockPos.down();
       var lowerBlockState = this.world.getBlockState(blockPos.down());
 
       if (lowerBlockState.isIn(ModBlockTags.GRASS_BLOCK)) {
-        info.setReturnValue(true);
-      }
+        if (lowerBlockState.getBlock() instanceof ModifiedGrassBlock block) {
+          info.setReturnValue(block.canMobsEat(lowerBlockState, this.world, lowerBlockPos));
+        }
 
-      if (lowerBlockState.isOf(ModBlocks.SOLID_GRASS_BLOCK) && !lowerBlockState.get(SolidGrassBlock.EATEN)) {
         info.setReturnValue(true);
       }
     }
@@ -68,15 +67,6 @@ public class EatGrassGoalMixin {
   private void tick(CallbackInfo info) {
     var blockPos = this.mob.getBlockPos().down();
     var blockState = this.world.getBlockState(blockPos);
-
-    if (blockState.isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
-      if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
-        this.world.setBlockState(blockPos, blockState.with(SolidGrassBlock.EATEN, true), Block.NOTIFY_LISTENERS);
-      }
-
-      this.mob.onEatingGrass();
-      info.cancel();
-    }
 
     // For custom grass blocks
     if (blockState.isIn(ModBlockTags.GRASS_BLOCK)) {
