@@ -29,7 +29,7 @@ public class EatGrassGoalMixin {
 	@Shadow
 	private World world;
 
-	/// Allow mobs to start eating custom grass blocks.
+	// Allow mobs to start eating custom grass blocks.
 	@Inject(
 		method = "canStart()Z",
 		at = @At(

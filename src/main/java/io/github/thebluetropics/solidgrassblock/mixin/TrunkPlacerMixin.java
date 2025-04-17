@@ -14,7 +14,7 @@ import static net.minecraft.world.gen.feature.Feature.isSoil;
 
 @Mixin(TrunkPlacer.class)
 public class TrunkPlacerMixin {
-	/// Convert custom grass block and solid mycelium to dirt when a tree is grown on top of them.
+	// Convert custom grass block and solid mycelium to dirt when a tree is grown on top of them.
 	@Inject(
 		at = @At("HEAD"),
 		method = "canGenerate",

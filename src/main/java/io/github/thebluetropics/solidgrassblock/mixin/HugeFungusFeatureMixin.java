@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(HugeFungusFeature.class)
 public class HugeFungusFeatureMixin {
-	/// Allows huge fungus feature to be placed on top of solid nyliums.
+	// Allows huge fungus feature to be placed on top of solid nyliums.
 	@Redirect(
 		method = "generate(Lnet/minecraft/world/gen/feature/util/FeatureContext;)Z",
 		at = @At(

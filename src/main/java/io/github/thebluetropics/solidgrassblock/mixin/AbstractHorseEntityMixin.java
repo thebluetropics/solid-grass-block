@@ -1,7 +1,6 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
 import io.github.thebluetropics.solidgrassblock.api.block.ModifiedGrassBlock;
-import io.github.thebluetropics.solidgrassblock.internal.MixinCompatibility;
 import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
 import net.minecraft.entity.passive.AbstractHorseEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,9 +16,7 @@ public class AbstractHorseEntityMixin {
 	@Shadow
 	private int eatingGrassTicks;
 
-	/// Allow horses to eat custom grass blocks.
-	@SuppressWarnings("DataFlowIssue")
-	@MixinCompatibility.High
+	// Allow horses to eat custom grass blocks.
 	@Inject(
 		at = @At(
 			value = "INVOKE",
