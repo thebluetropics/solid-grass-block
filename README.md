@@ -1,1 +1,1 @@
-Adds solid variants of all grass blocks.
+A decorative mod that introduces you Solid Grass Block(s)
