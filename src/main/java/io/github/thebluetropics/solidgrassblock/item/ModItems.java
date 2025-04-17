@@ -62,19 +62,7 @@ public class ModItems {
 	);
 
 	public static <T extends Item> T register(String id, T item) {
-		Registry.register(Registries.ITEM, new Identifier(SolidGrassBlockMod.ID, id), item);
-
-		items.add(item);
-
-		return item;
-	}
-
-	public static Item[] toArray() {
-		return items.toArray(new Item[] {});
-	}
-
-	public static Set<Item> toSet() {
-		return new HashSet<>(items);
+		return Registry.register(Registries.ITEM, new Identifier(SolidGrassBlockMod.ID, id), item);
 	}
 
 	public static void initialize() { /* ... */ }

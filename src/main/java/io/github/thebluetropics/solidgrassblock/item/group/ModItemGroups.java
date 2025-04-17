@@ -3,13 +3,11 @@ package io.github.thebluetropics.solidgrassblock.item.group;
 import io.github.thebluetropics.solidgrassblock.SolidGrassBlockMod;
 import io.github.thebluetropics.solidgrassblock.item.ModItems;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.ApiStatus;
 
 public class ModItemGroups {
 	public static final ItemGroup SOLID_GRASS_BLOCK = register(
@@ -19,9 +17,12 @@ public class ModItemGroups {
 			.displayName(Text.translatable("itemGroup." + SolidGrassBlockMod.ID +".solid_grass_block"))
 			.noScrollbar()
 			.entries((context, entries) -> {
-				for (Item item : ModItems.toArray()) {
-					entries.add(item.getDefaultStack());
-				}
+				entries.add(ModItems.SOLID_GRASS_BLOCK);
+				entries.add(ModItems.SOLID_DIRT_PATH);
+				entries.add(ModItems.SOLID_PODZOL);
+				entries.add(ModItems.SOLID_MYCELIUM);
+				entries.add(ModItems.SOLID_CRIMSON_NYLIUM);
+				entries.add(ModItems.SOLID_WARPED_NYLIUM);
 			})
 			.build()
 	);
