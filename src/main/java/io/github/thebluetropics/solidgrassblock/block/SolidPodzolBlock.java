@@ -8,7 +8,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.WorldAccess;
-import org.jetbrains.annotations.Nullable;
 
 public class SolidPodzolBlock extends ModifiedPodzolBlock {
 	public SolidPodzolBlock(Settings settings) {
@@ -30,7 +29,6 @@ public class SolidPodzolBlock extends ModifiedPodzolBlock {
 		return state;
 	}
 
-	@Nullable
 	@Override
 	public BlockState getPlacementState(ItemPlacementContext context) {
 		return this.getDefaultState();

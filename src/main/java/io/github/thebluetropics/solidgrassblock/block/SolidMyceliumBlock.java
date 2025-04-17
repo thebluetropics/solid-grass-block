@@ -89,7 +89,6 @@ public class SolidMyceliumBlock extends Block {
 	/**
 	 * Checks whether a solid mycelium block can survive.
 	 */
-	@SuppressWarnings("deprecation")
 	public static boolean canSolidMyceliumSurvive(BlockState state, WorldView world, BlockPos pos) {
 		for (Direction direction : Direction.values()) {
 			var checkPos = pos.offset(direction);

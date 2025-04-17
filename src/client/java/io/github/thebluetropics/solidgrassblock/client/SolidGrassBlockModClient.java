@@ -16,8 +16,6 @@ import org.slf4j.LoggerFactory;
 import java.util.Objects;
 
 public class SolidGrassBlockModClient implements ClientModInitializer {
-	public static final Logger LOGGER = LoggerFactory.getLogger(SolidGrassBlockModClient.class);
-
 	@Override
 	public void onInitializeClient() {
 		ColorProviderRegistry.BLOCK.register(

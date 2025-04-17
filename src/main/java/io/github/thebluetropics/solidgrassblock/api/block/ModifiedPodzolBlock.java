@@ -48,7 +48,6 @@ public class ModifiedPodzolBlock extends Block {
 		return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
 	}
 
-	@Nullable
 	@Override
 	public BlockState getPlacementState(ItemPlacementContext context) {
 		BlockState upperState = context.getWorld().getBlockState(context.getBlockPos().up());

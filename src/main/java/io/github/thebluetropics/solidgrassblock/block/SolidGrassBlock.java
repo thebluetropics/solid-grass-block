@@ -95,7 +95,7 @@ public class SolidGrassBlock extends ModifiedGrassBlock {
 	}
 
 	@Override
-	public @Nullable BlockState getPlacementState(ItemPlacementContext context) {
+	public BlockState getPlacementState(ItemPlacementContext context) {
 		return getDefaultState().with(EATEN, context.getStack().get(ModDataComponents.EATEN));
 	}
 

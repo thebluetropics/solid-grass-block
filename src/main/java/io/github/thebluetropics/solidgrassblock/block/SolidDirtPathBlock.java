@@ -56,7 +56,6 @@ public class SolidDirtPathBlock extends Block {
 		return false;
 	}
 
-	@Nullable
 	@Override
 	public BlockState getPlacementState(ItemPlacementContext context) {
 		var world = context.getWorld();

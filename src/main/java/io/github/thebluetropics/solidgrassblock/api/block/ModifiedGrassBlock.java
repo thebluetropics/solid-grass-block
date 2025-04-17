@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.chunk.light.ChunkLightProvider;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
@@ -167,7 +166,6 @@ public class ModifiedGrassBlock extends Block implements Fertilizable {
 		return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
 	}
 
-	@Nullable
 	@Override
 	public BlockState getPlacementState(ItemPlacementContext context) {
 		BlockState upperState = context.getWorld().getBlockState(context.getBlockPos().up());

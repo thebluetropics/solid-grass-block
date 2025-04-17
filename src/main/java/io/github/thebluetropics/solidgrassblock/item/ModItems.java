@@ -61,7 +61,6 @@ public class ModItems {
 		)
 	);
 
-	@ApiStatus.Internal
 	public static <T extends Item> T register(String id, T item) {
 		Registry.register(Registries.ITEM, new Identifier(SolidGrassBlockMod.ID, id), item);
 
@@ -78,6 +77,5 @@ public class ModItems {
 		return new HashSet<>(items);
 	}
 
-	@ApiStatus.Internal
 	public static void initialize() { /* ... */ }
 }
