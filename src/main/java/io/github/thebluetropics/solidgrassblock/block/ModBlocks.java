@@ -13,76 +13,76 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.ApiStatus;
 
 public class ModBlocks {
-  public static final Block SOLID_GRASS_BLOCK = register(
-    "solid_grass_block",
-    new SolidGrassBlock(
-      AbstractBlock.Settings.create()
-        .mapColor(MapColor.PALE_GREEN)
-        .ticksRandomly()
-        .strength(0.6f)
-        .sounds(BlockSoundGroup.GRASS)
-    )
-  );
-  public static final Block SOLID_DIRT_PATH = register(
-    "solid_dirt_path",
-    new SolidDirtPathBlock(
-      AbstractBlock.Settings.create()
-        .mapColor(MapColor.DIRT_BROWN)
-        .strength(0.65F)
-        .sounds(BlockSoundGroup.GRASS)
-        .blockVision(Blocks::always)
-        .suffocates(Blocks::always)
-    )
-  );
-  public static final Block SOLID_PODZOL = register(
-    "solid_podzol",
-    new SolidPodzolBlock(
-      AbstractBlock.Settings.create()
-        .mapColor(MapColor.SPRUCE_BROWN)
-        .strength(0.5F)
-        .sounds(BlockSoundGroup.GRAVEL)
-    )
-  );
-  public static final Block SOLID_MYCELIUM = register(
-    "solid_mycelium",
-    new SolidMyceliumBlock(
-      AbstractBlock.Settings.create()
-        .mapColor(MapColor.PURPLE)
-        .ticksRandomly()
-        .strength(0.6F)
-        .sounds(BlockSoundGroup.GRASS)
-    )
-  );
-  public static final Block SOLID_CRIMSON_NYLIUM = register(
-    "solid_crimson_nylium",
-    new SolidNyliumBlock(
-      AbstractBlock.Settings.create()
-        .mapColor(MapColor.DULL_RED)
-        .instrument(Instrument.BASEDRUM)
-        .requiresTool()
-        .strength(0.4F)
-        .sounds(BlockSoundGroup.NYLIUM)
-        .ticksRandomly()
-    )
-  );
-  public static final Block SOLID_WARPED_NYLIUM = register(
-    "solid_warped_nylium",
-    new SolidNyliumBlock(
-      AbstractBlock.Settings.create()
-        .mapColor(MapColor.TEAL)
-        .instrument(Instrument.BASEDRUM)
-        .requiresTool()
-        .strength(0.4F)
-        .sounds(BlockSoundGroup.NYLIUM)
-        .ticksRandomly()
-    )
-  );
+	public static final Block SOLID_GRASS_BLOCK = register(
+		"solid_grass_block",
+		new SolidGrassBlock(
+			AbstractBlock.Settings.create()
+				.mapColor(MapColor.PALE_GREEN)
+				.ticksRandomly()
+				.strength(0.6f)
+				.sounds(BlockSoundGroup.GRASS)
+		)
+	);
+	public static final Block SOLID_DIRT_PATH = register(
+		"solid_dirt_path",
+		new SolidDirtPathBlock(
+			AbstractBlock.Settings.create()
+				.mapColor(MapColor.DIRT_BROWN)
+				.strength(0.65F)
+				.sounds(BlockSoundGroup.GRASS)
+				.blockVision(Blocks::always)
+				.suffocates(Blocks::always)
+		)
+	);
+	public static final Block SOLID_PODZOL = register(
+		"solid_podzol",
+		new SolidPodzolBlock(
+			AbstractBlock.Settings.create()
+				.mapColor(MapColor.SPRUCE_BROWN)
+				.strength(0.5F)
+				.sounds(BlockSoundGroup.GRAVEL)
+		)
+	);
+	public static final Block SOLID_MYCELIUM = register(
+		"solid_mycelium",
+		new SolidMyceliumBlock(
+			AbstractBlock.Settings.create()
+				.mapColor(MapColor.PURPLE)
+				.ticksRandomly()
+				.strength(0.6F)
+				.sounds(BlockSoundGroup.GRASS)
+		)
+	);
+	public static final Block SOLID_CRIMSON_NYLIUM = register(
+		"solid_crimson_nylium",
+		new SolidNyliumBlock(
+			AbstractBlock.Settings.create()
+				.mapColor(MapColor.DULL_RED)
+				.instrument(Instrument.BASEDRUM)
+				.requiresTool()
+				.strength(0.4F)
+				.sounds(BlockSoundGroup.NYLIUM)
+				.ticksRandomly()
+		)
+	);
+	public static final Block SOLID_WARPED_NYLIUM = register(
+		"solid_warped_nylium",
+		new SolidNyliumBlock(
+			AbstractBlock.Settings.create()
+				.mapColor(MapColor.TEAL)
+				.instrument(Instrument.BASEDRUM)
+				.requiresTool()
+				.strength(0.4F)
+				.sounds(BlockSoundGroup.NYLIUM)
+				.ticksRandomly()
+		)
+	);
 
-  @ApiStatus.Internal
-  public static <T extends Block> T register(String id, T block) {
-    return Registry.register(Registries.BLOCK, new Identifier(SolidGrassBlockMod.ID, id), block);
-  }
+	@ApiStatus.Internal
+	public static <T extends Block> T register(String id, T block) {
+		return Registry.register(Registries.BLOCK, new Identifier(SolidGrassBlockMod.ID, id), block);
+	}
 
-  @ApiStatus.Internal
-  public static void initialize() { /* ... */ }
+	@ApiStatus.Internal
+	public static void initialize() { /* ... */ }
 }

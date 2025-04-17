@@ -1,23 +1,23 @@
 {
-  "multipart": [
-    {
-      "apply": [
-        {
-          "model": "solid_grass_block:block/solid_mycelium"
-        },
-        {
-          "model": "solid_grass_block:block/solid_mycelium",
-          "y": 90
-        },
-        {
-          "model": "solid_grass_block:block/solid_mycelium",
-          "y": 180
-        },
-        {
-          "model": "solid_grass_block:block/solid_mycelium",
-          "y": 270
-        }
-      ]
-    }
-  ]
+	"multipart": [
+		{
+			"apply": [
+				{
+					"model": "solid_grass_block:block/solid_mycelium"
+				},
+				{
+					"model": "solid_grass_block:block/solid_mycelium",
+					"y": 90
+				},
+				{
+					"model": "solid_grass_block:block/solid_mycelium",
+					"y": 180
+				},
+				{
+					"model": "solid_grass_block:block/solid_mycelium",
+					"y": 270
+				}
+			]
+		}
+	]
 }

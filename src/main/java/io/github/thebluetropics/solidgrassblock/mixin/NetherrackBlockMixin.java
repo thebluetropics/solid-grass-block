@@ -12,29 +12,29 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(NetherrackBlock.class)
 public class NetherrackBlockMixin {
-  /// Allows solid warped nylium to spread.
-  @Redirect(
-    method = "grow(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/random/Random;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V",
-    at = @At(
-      value = "INVOKE",
-      target = "Lnet/minecraft/block/BlockState;isOf(Lnet/minecraft/block/Block;)Z",
-      ordinal = 0
-    )
-  )
-  private boolean isOfWarpedNylium(BlockState blockState, Block block) {
-    return BlockStateHelper.isOf(blockState, Blocks.WARPED_NYLIUM, ModBlocks.SOLID_WARPED_NYLIUM);
-  }
+	/// Allows solid warped nylium to spread.
+	@Redirect(
+		method = "grow(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/random/Random;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V",
+		at = @At(
+			value = "INVOKE",
+			target = "Lnet/minecraft/block/BlockState;isOf(Lnet/minecraft/block/Block;)Z",
+			ordinal = 0
+		)
+	)
+	private boolean isOfWarpedNylium(BlockState blockState, Block block) {
+		return BlockStateHelper.isOf(blockState, Blocks.WARPED_NYLIUM, ModBlocks.SOLID_WARPED_NYLIUM);
+	}
 
-  /// Allows solid crimson nylium to spread.
-  @Redirect(
-    method = "grow(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/random/Random;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V",
-    at = @At(
-      value = "INVOKE",
-      target = "Lnet/minecraft/block/BlockState;isOf(Lnet/minecraft/block/Block;)Z",
-      ordinal = 1
-    )
-  )
-  private boolean isOfCrimsonNylium(BlockState blockState, Block block) {
-    return BlockStateHelper.isOf(blockState, Blocks.CRIMSON_NYLIUM, ModBlocks.SOLID_CRIMSON_NYLIUM);
-  }
+	/// Allows solid crimson nylium to spread.
+	@Redirect(
+		method = "grow(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/random/Random;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V",
+		at = @At(
+			value = "INVOKE",
+			target = "Lnet/minecraft/block/BlockState;isOf(Lnet/minecraft/block/Block;)Z",
+			ordinal = 1
+		)
+	)
+	private boolean isOfCrimsonNylium(BlockState blockState, Block block) {
+		return BlockStateHelper.isOf(blockState, Blocks.CRIMSON_NYLIUM, ModBlocks.SOLID_CRIMSON_NYLIUM);
+	}
 }

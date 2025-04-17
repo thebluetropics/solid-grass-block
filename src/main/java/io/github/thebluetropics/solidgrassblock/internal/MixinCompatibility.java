@@ -6,15 +6,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 public final class MixinCompatibility {
-  @Retention(RetentionPolicy.SOURCE)
-  @Target(ElementType.METHOD)
-  public @interface Low {
-    /* ... */
-  }
+	@Retention(RetentionPolicy.SOURCE)
+	@Target(ElementType.METHOD)
+	public @interface Low {
+		/* ... */
+	}
 
-  @Retention(RetentionPolicy.SOURCE)
-  @Target(ElementType.METHOD)
-  public @interface High {
-    /* ... */
-  }
+	@Retention(RetentionPolicy.SOURCE)
+	@Target(ElementType.METHOD)
+	public @interface High {
+		/* ... */
+	}
 }

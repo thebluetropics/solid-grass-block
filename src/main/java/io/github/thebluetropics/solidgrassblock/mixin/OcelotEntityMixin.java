@@ -11,26 +11,26 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(OcelotEntity.class)
 public class OcelotEntityMixin {
-  /// Allows ocelot to spawn on top of a solid grass block.
-  @SuppressWarnings("DataFlowIssue")
-  @Inject(
-    at = @At(
-      value = "INVOKE",
-      target = "Lnet/minecraft/world/WorldView;getBlockState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/block/BlockState;",
-      shift = At.Shift.AFTER,
-      ordinal = 0
-    ),
-    method = "canSpawn(Lnet/minecraft/world/WorldView;)Z"
-  )
-  private void canSpawn(WorldView world, CallbackInfoReturnable<Boolean> info) {
-    OcelotEntity entity = (OcelotEntity) (Object) this;
+	/// Allows ocelot to spawn on top of a solid grass block.
+	@SuppressWarnings("DataFlowIssue")
+	@Inject(
+		at = @At(
+			value = "INVOKE",
+			target = "Lnet/minecraft/world/WorldView;getBlockState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/block/BlockState;",
+			shift = At.Shift.AFTER,
+			ordinal = 0
+		),
+		method = "canSpawn(Lnet/minecraft/world/WorldView;)Z"
+	)
+	private void canSpawn(WorldView world, CallbackInfoReturnable<Boolean> info) {
+		OcelotEntity entity = (OcelotEntity) (Object) this;
 
-    if (world.getBlockState(entity.getBlockPos().down()).isIn(ModBlockTags.GRASS_BLOCK)) {
-      info.setReturnValue(true);
-    }
+		if (world.getBlockState(entity.getBlockPos().down()).isIn(ModBlockTags.GRASS_BLOCK)) {
+			info.setReturnValue(true);
+		}
 
-    if (world.getBlockState(entity.getBlockPos().down()).isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
-      info.setReturnValue(true);
-    }
-  }
+		if (world.getBlockState(entity.getBlockPos().down()).isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
+			info.setReturnValue(true);
+		}
+	}
 }

@@ -1,8 +1,8 @@
 {
-  "replace": false,
-  "values": [
-    "solid_grass_block:solid_grass_block",
-    "solid_grass_block:solid_podzol",
-    "solid_grass_block:solid_mycelium"
-  ]
+	"replace": false,
+	"values": [
+		"solid_grass_block:solid_grass_block",
+		"solid_grass_block:solid_podzol",
+		"solid_grass_block:solid_mycelium"
+	]
 }

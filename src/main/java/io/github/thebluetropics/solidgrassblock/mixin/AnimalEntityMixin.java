@@ -13,28 +13,28 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AnimalEntity.class)
 public class AnimalEntityMixin {
-  /// Allow animals to favor solid grass block for pathfinding.
-  @Inject(
-    at = @At("HEAD"),
-    method = "getPathfindingFavor(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/world/WorldView;)F",
-    cancellable = true
-  )
-  private void isOf(BlockPos pos, WorldView world, CallbackInfoReturnable<Float> info) {
-    var lowerPos = pos.down();
-    var lowerState = world.getBlockState(lowerPos);
+	/// Allow animals to favor solid grass block for pathfinding.
+	@Inject(
+		at = @At("HEAD"),
+		method = "getPathfindingFavor(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/world/WorldView;)F",
+		cancellable = true
+	)
+	private void isOf(BlockPos pos, WorldView world, CallbackInfoReturnable<Float> info) {
+		var lowerPos = pos.down();
+		var lowerState = world.getBlockState(lowerPos);
 
-    if (lowerState.isIn(ModBlockTags.GRASS_BLOCK)) {
-      if (lowerState.getBlock() instanceof ModifiedGrassBlock block) {
-        if (block.canAnimalPathfindingFavor(lowerState, world, lowerPos)) {
-          info.setReturnValue(10.0f);
-        }
-      } else {
-        info.setReturnValue(10.0f);
-      }
-    }
+		if (lowerState.isIn(ModBlockTags.GRASS_BLOCK)) {
+			if (lowerState.getBlock() instanceof ModifiedGrassBlock block) {
+				if (block.canAnimalPathfindingFavor(lowerState, world, lowerPos)) {
+					info.setReturnValue(10.0f);
+				}
+			} else {
+				info.setReturnValue(10.0f);
+			}
+		}
 
-    if (world.getBlockState(pos.down()).isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
-      info.setReturnValue(10.0f);
-    }
-  }
+		if (world.getBlockState(pos.down()).isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
+			info.setReturnValue(10.0f);
+		}
+	}
 }

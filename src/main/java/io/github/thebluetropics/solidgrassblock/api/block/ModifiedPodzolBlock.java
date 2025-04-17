@@ -16,43 +16,43 @@ import org.jetbrains.annotations.Nullable;
  * Modified implementation of vanilla podzol block.
  */
 public class ModifiedPodzolBlock extends Block {
-  /**
-   * Set to <code>true</code> when there's a snow block on top of this block.
-   */
-  public static final BooleanProperty SNOWY = BooleanProperty.of("snowy");
+	/**
+	 * Set to <code>true</code> when there's a snow block on top of this block.
+	 */
+	public static final BooleanProperty SNOWY = BooleanProperty.of("snowy");
 
-  public ModifiedPodzolBlock(Settings settings) {
-    super(settings);
+	public ModifiedPodzolBlock(Settings settings) {
+		super(settings);
 
-    // Optionally set default `SNOWY` state.
-    if (this.stateManager.getProperties().contains(SNOWY)) {
-      this.setDefaultState(this.getDefaultState().with(SNOWY, false));
-    }
-  }
+		// Optionally set default `SNOWY` state.
+		if (this.stateManager.getProperties().contains(SNOWY)) {
+			this.setDefaultState(this.getDefaultState().with(SNOWY, false));
+		}
+	}
 
-  public BlockState getPathState() {
-    return Blocks.DIRT_PATH.getDefaultState();
-  }
+	public BlockState getPathState() {
+		return Blocks.DIRT_PATH.getDefaultState();
+	}
 
-  @Override
-  protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-    builder.add(SNOWY);
-  }
+	@Override
+	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+		builder.add(SNOWY);
+	}
 
-  @Override
-  protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-    if (direction.equals(Direction.UP)) {
-      return state.with(SNOWY, neighborState.isIn(BlockTags.SNOW));
-    }
+	@Override
+	protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+		if (direction.equals(Direction.UP)) {
+			return state.with(SNOWY, neighborState.isIn(BlockTags.SNOW));
+		}
 
-    return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-  }
+		return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+	}
 
-  @Nullable
-  @Override
-  public BlockState getPlacementState(ItemPlacementContext context) {
-    BlockState upperState = context.getWorld().getBlockState(context.getBlockPos().up());
+	@Nullable
+	@Override
+	public BlockState getPlacementState(ItemPlacementContext context) {
+		BlockState upperState = context.getWorld().getBlockState(context.getBlockPos().up());
 
-    return this.getDefaultState().with(SNOWY, upperState.isIn(BlockTags.SNOW));
-  }
+		return this.getDefaultState().with(SNOWY, upperState.isIn(BlockTags.SNOW));
+	}
 }

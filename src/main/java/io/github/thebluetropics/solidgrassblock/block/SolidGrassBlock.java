@@ -20,90 +20,90 @@ import net.minecraft.world.chunk.light.ChunkLightProvider;
 import org.jetbrains.annotations.Nullable;
 
 public class SolidGrassBlock extends ModifiedGrassBlock {
-  /**
-   * Indicates whether a <b>Solid Grass Block</b> has been eaten by mobs.
-   */
-  public static final BooleanProperty EATEN = BooleanProperty.of("eaten");
+	/**
+	 * Indicates whether a <b>Solid Grass Block</b> has been eaten by mobs.
+	 */
+	public static final BooleanProperty EATEN = BooleanProperty.of("eaten");
 
-  public SolidGrassBlock(Settings settings) {
-    super(settings);
+	public SolidGrassBlock(Settings settings) {
+		super(settings);
 
-    this.setDefaultState(
-      this.getDefaultState()
-        .with(EATEN, false)
-    );
-  }
+		this.setDefaultState(
+			this.getDefaultState()
+				.with(EATEN, false)
+		);
+	}
 
-  @Override
-  public BlockState getEatenState() {
-    return this.getDefaultState().with(EATEN, true);
-  }
+	@Override
+	public BlockState getEatenState() {
+		return this.getDefaultState().with(EATEN, true);
+	}
 
-  @Override
-  public BlockState getPathState() {
-    return ModBlocks.SOLID_DIRT_PATH.getDefaultState();
-  }
+	@Override
+	public BlockState getPathState() {
+		return ModBlocks.SOLID_DIRT_PATH.getDefaultState();
+	}
 
-  @Override
-  public BlockState getSpreadState() {
-    return Blocks.GRASS_BLOCK.getDefaultState();
-  }
+	@Override
+	public BlockState getSpreadState() {
+		return Blocks.GRASS_BLOCK.getDefaultState();
+	}
 
-  @Override
-  public boolean canSurvive(BlockState state, WorldView world, BlockPos pos) {
-    for (Direction direction : Direction.values()) {
-      var checkPos = pos.offset(direction);
-      var checkState = world.getBlockState(pos.offset(direction));
+	@Override
+	public boolean canSurvive(BlockState state, WorldView world, BlockPos pos) {
+		for (Direction direction : Direction.values()) {
+			var checkPos = pos.offset(direction);
+			var checkState = world.getBlockState(pos.offset(direction));
 
-      int realisticOpacity = ChunkLightProvider.getRealisticOpacity(
-        world,
-        state,
-        pos,
-        checkState,
-        checkPos,
-        direction,
-        checkState.getOpacity(world, checkPos)
-      );
+			int realisticOpacity = ChunkLightProvider.getRealisticOpacity(
+				world,
+				state,
+				pos,
+				checkState,
+				checkPos,
+				direction,
+				checkState.getOpacity(world, checkPos)
+			);
 
-      if (realisticOpacity < world.getMaxLightLevel() && checkState.getFluidState().getLevel() < 8) {
-        return true;
-      }
-    }
+			if (realisticOpacity < world.getMaxLightLevel() && checkState.getFluidState().getLevel() < 8) {
+				return true;
+			}
+		}
 
-    return false;
-  }
+		return false;
+	}
 
-  @Override
-  protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-    super.randomTick(state, world, pos, random);
+	@Override
+	protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+		super.randomTick(state, world, pos, random);
 
-    if (world.getLightLevel(pos.up()) > 8) {
-      if (state.get(EATEN)) {
-        world.setBlockState(pos, state.with(EATEN, false), Block.NOTIFY_LISTENERS);
-      }
-    }
-  }
+		if (world.getLightLevel(pos.up()) > 8) {
+			if (state.get(EATEN)) {
+				world.setBlockState(pos, state.with(EATEN, false), Block.NOTIFY_LISTENERS);
+			}
+		}
+	}
 
-  @Override
-  protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-    builder.add(EATEN);
-  }
+	@Override
+	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+		builder.add(EATEN);
+	}
 
-  @Override
-  protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-    return state;
-  }
+	@Override
+	protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+		return state;
+	}
 
-  @Override
-  public @Nullable BlockState getPlacementState(ItemPlacementContext context) {
-    return getDefaultState().with(EATEN, context.getStack().get(ModDataComponents.EATEN));
-  }
+	@Override
+	public @Nullable BlockState getPlacementState(ItemPlacementContext context) {
+		return getDefaultState().with(EATEN, context.getStack().get(ModDataComponents.EATEN));
+	}
 
-  @Override
-  public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
-    var stack = ModItems.SOLID_GRASS_BLOCK.getDefaultStack();
-    stack.set(ModDataComponents.EATEN, state.get(EATEN));
+	@Override
+	public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
+		var stack = ModItems.SOLID_GRASS_BLOCK.getDefaultStack();
+		stack.set(ModDataComponents.EATEN, state.get(EATEN));
 
-    return stack;
-  }
+		return stack;
+	}
 }

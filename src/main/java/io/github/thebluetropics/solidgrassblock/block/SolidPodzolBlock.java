@@ -11,28 +11,28 @@ import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
 public class SolidPodzolBlock extends ModifiedPodzolBlock {
-  public SolidPodzolBlock(Settings settings) {
-    super(settings);
-  }
+	public SolidPodzolBlock(Settings settings) {
+		super(settings);
+	}
 
-  @Override
-  public BlockState getPathState() {
-    return ModBlocks.SOLID_DIRT_PATH.getDefaultState();
-  }
+	@Override
+	public BlockState getPathState() {
+		return ModBlocks.SOLID_DIRT_PATH.getDefaultState();
+	}
 
-  @Override
-  protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-    /* ... */
-  }
+	@Override
+	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+		/* ... */
+	}
 
-  @Override
-  protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-    return state;
-  }
+	@Override
+	protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+		return state;
+	}
 
-  @Nullable
-  @Override
-  public BlockState getPlacementState(ItemPlacementContext context) {
-    return this.getDefaultState();
-  }
+	@Nullable
+	@Override
+	public BlockState getPlacementState(ItemPlacementContext context) {
+		return this.getDefaultState();
+	}
 }

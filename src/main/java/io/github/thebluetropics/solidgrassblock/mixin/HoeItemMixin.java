@@ -21,65 +21,65 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(HoeItem.class)
 public class HoeItemMixin {
-  /// Allows solid grass block and solid dirt path to be tilled into a farmland block.
-  @Inject(at = @At("HEAD"), method = "useOnBlock", cancellable = true)
-  private void useOnBlock(ItemUsageContext context, CallbackInfoReturnable<ActionResult> info) {
-    var world = context.getWorld();
-    var player = context.getPlayer();
+	/// Allows solid grass block and solid dirt path to be tilled into a farmland block.
+	@Inject(at = @At("HEAD"), method = "useOnBlock", cancellable = true)
+	private void useOnBlock(ItemUsageContext context, CallbackInfoReturnable<ActionResult> info) {
+		var world = context.getWorld();
+		var player = context.getPlayer();
 
-    var blockPos = context.getBlockPos();
-    var blockState = world.getBlockState(blockPos);
+		var blockPos = context.getBlockPos();
+		var blockState = world.getBlockState(blockPos);
 
-    if (BlockStateHelper.isOf(blockState, ModBlocks.SOLID_GRASS_BLOCK, ModBlocks.SOLID_DIRT_PATH)) {
-      if (HoeItem.canTillFarmland(context)) {
-        world.playSound(player, blockPos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
+		if (BlockStateHelper.isOf(blockState, ModBlocks.SOLID_GRASS_BLOCK, ModBlocks.SOLID_DIRT_PATH)) {
+			if (HoeItem.canTillFarmland(context)) {
+				world.playSound(player, blockPos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
 
-        if (!world.isClient()) {
-          world.setBlockState(
-            blockPos,
-            Blocks.FARMLAND.getDefaultState(),
-            Block.NOTIFY_ALL_AND_REDRAW
-          );
-          world.emitGameEvent(
-            GameEvent.BLOCK_CHANGE,
-            blockPos,
-            GameEvent.Emitter.of(player, Blocks.FARMLAND.getDefaultState())
-          );
+				if (!world.isClient()) {
+					world.setBlockState(
+						blockPos,
+						Blocks.FARMLAND.getDefaultState(),
+						Block.NOTIFY_ALL_AND_REDRAW
+					);
+					world.emitGameEvent(
+						GameEvent.BLOCK_CHANGE,
+						blockPos,
+						GameEvent.Emitter.of(player, Blocks.FARMLAND.getDefaultState())
+					);
 
-          var stack = context.getStack();
+					var stack = context.getStack();
 
-          if (player != null) {
-            stack.damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
-          }
-        }
+					if (player != null) {
+						stack.damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
+					}
+				}
 
-        info.setReturnValue(ActionResult.success(world.isClient));
-      }
-    }
+				info.setReturnValue(ActionResult.success(world.isClient));
+			}
+		}
 
-    if (blockState.isIn(ModBlockTags.GRASS_BLOCK)) {
-      if (HoeItem.canTillFarmland(context)) {
-        world.playSound(player, blockPos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
+		if (blockState.isIn(ModBlockTags.GRASS_BLOCK)) {
+			if (HoeItem.canTillFarmland(context)) {
+				world.playSound(player, blockPos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
 
-        if (!world.isClient()) {
-          BlockState tilledState = Blocks.FARMLAND.getDefaultState();
+				if (!world.isClient()) {
+					BlockState tilledState = Blocks.FARMLAND.getDefaultState();
 
-          if (blockState.getBlock() instanceof ModifiedGrassBlock block) {
-            tilledState = block.getTilledState();
-          }
+					if (blockState.getBlock() instanceof ModifiedGrassBlock block) {
+						tilledState = block.getTilledState();
+					}
 
-          world.setBlockState(blockPos, tilledState, Block.NOTIFY_ALL_AND_REDRAW);
-          world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(player, Blocks.FARMLAND.getDefaultState()));
+					world.setBlockState(blockPos, tilledState, Block.NOTIFY_ALL_AND_REDRAW);
+					world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(player, Blocks.FARMLAND.getDefaultState()));
 
-          var stack = context.getStack();
+					var stack = context.getStack();
 
-          if (player != null) {
-            stack.damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
-          }
-        }
+					if (player != null) {
+						stack.damage(1, player, LivingEntity.getSlotForHand(context.getHand()));
+					}
+				}
 
-        info.setReturnValue(ActionResult.success(world.isClient));
-      }
-    }
-  }
+				info.setReturnValue(ActionResult.success(world.isClient));
+			}
+		}
+	}
 }

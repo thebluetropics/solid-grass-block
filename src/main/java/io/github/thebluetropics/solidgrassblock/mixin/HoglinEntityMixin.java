@@ -11,18 +11,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(HoglinEntity.class)
 public class HoglinEntityMixin {
-  /// Allows hoglin to favor solid crimson nylium for pathfinding.
-  @Inject(
-    at = @At(
-      value = "RETURN",
-      ordinal = 1
-    ),
-    method = "getPathfindingFavor",
-    cancellable = true
-  )
-  private void getPathfindingFavor(BlockPos pos, WorldView world, CallbackInfoReturnable<Float> info) {
-    if (world.getBlockState(pos.down()).isOf(ModBlocks.SOLID_CRIMSON_NYLIUM)) {
-      info.setReturnValue(10.0f);
-    }
-  }
+	/// Allows hoglin to favor solid crimson nylium for pathfinding.
+	@Inject(
+		at = @At(
+			value = "RETURN",
+			ordinal = 1
+		),
+		method = "getPathfindingFavor",
+		cancellable = true
+	)
+	private void getPathfindingFavor(BlockPos pos, WorldView world, CallbackInfoReturnable<Float> info) {
+		if (world.getBlockState(pos.down()).isOf(ModBlocks.SOLID_CRIMSON_NYLIUM)) {
+			info.setReturnValue(10.0f);
+		}
+	}
 }

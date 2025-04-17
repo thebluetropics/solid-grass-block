@@ -1,9 +1,9 @@
 {
-  "replace": false,
-  "values": [
-    "solid_grass_block:solid_podzol",
-    "solid_grass_block:solid_mycelium",
-    "solid_grass_block:solid_crimson_nylium",
-    "solid_grass_block:solid_warped_nylium"
-  ]
+	"replace": false,
+	"values": [
+		"solid_grass_block:solid_podzol",
+		"solid_grass_block:solid_mycelium",
+		"solid_grass_block:solid_crimson_nylium",
+		"solid_grass_block:solid_warped_nylium"
+	]
 }

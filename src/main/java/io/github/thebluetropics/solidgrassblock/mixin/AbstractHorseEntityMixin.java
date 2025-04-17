@@ -14,42 +14,42 @@ import java.util.Objects;
 
 @Mixin(AbstractHorseEntity.class)
 public class AbstractHorseEntityMixin {
-  @Shadow
-  private int eatingGrassTicks;
+	@Shadow
+	private int eatingGrassTicks;
 
-  /// Allow horses to eat custom grass blocks.
-  @SuppressWarnings("DataFlowIssue")
-  @MixinCompatibility.High
-  @Inject(
-    at = @At(
-      value = "INVOKE",
-      target = "Lnet/minecraft/entity/passive/AnimalEntity;tickMovement()V",
-      ordinal = 0,
-      shift = At.Shift.AFTER
-    ),
-    method = "tickMovement()V"
-  )
-  private void tickMovement(CallbackInfo info) {
-    var entity = (AbstractHorseEntity) (Object) this;
+	/// Allow horses to eat custom grass blocks.
+	@SuppressWarnings("DataFlowIssue")
+	@MixinCompatibility.High
+	@Inject(
+		at = @At(
+			value = "INVOKE",
+			target = "Lnet/minecraft/entity/passive/AnimalEntity;tickMovement()V",
+			ordinal = 0,
+			shift = At.Shift.AFTER
+		),
+		method = "tickMovement()V"
+	)
+	private void tickMovement(CallbackInfo info) {
+		var entity = (AbstractHorseEntity) (Object) this;
 
-    if (!entity.getWorld().isClient && entity.isAlive()) {
-      if (entity.eatsGrass()) {
-        var lowerBlockState = entity.getWorld().getBlockState(entity.getBlockPos().down());
+		if (!entity.getWorld().isClient && entity.isAlive()) {
+			if (entity.eatsGrass()) {
+				var lowerBlockState = entity.getWorld().getBlockState(entity.getBlockPos().down());
 
-        if (!entity.isEatingGrass()) {
-          if (lowerBlockState.isIn(ModBlockTags.GRASS_BLOCK)) {
-            if (lowerBlockState.getBlock() instanceof ModifiedGrassBlock block) {
-              if (block.canMobsEat(lowerBlockState) && !entity.hasPassengers() && Objects.equals(entity.getRandom().nextInt(300), 0)) {
-                entity.setEatingGrass(true);
-              }
-            } else {
-              if (!entity.hasPassengers() && Objects.equals(entity.getRandom().nextInt(300), 0)) {
-                entity.setEatingGrass(true);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+				if (!entity.isEatingGrass()) {
+					if (lowerBlockState.isIn(ModBlockTags.GRASS_BLOCK)) {
+						if (lowerBlockState.getBlock() instanceof ModifiedGrassBlock block) {
+							if (block.canMobsEat(lowerBlockState) && !entity.hasPassengers() && Objects.equals(entity.getRandom().nextInt(300), 0)) {
+								entity.setEatingGrass(true);
+							}
+						} else {
+							if (!entity.hasPassengers() && Objects.equals(entity.getRandom().nextInt(300), 0)) {
+								entity.setEatingGrass(true);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

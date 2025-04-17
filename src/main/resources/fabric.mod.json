@@ -1,43 +1,43 @@
 {
-  "schemaVersion": 1,
-  "id": "%mod_id%",
-  "version": "%version%",
-  "name": "Solid Grass Block",
-  "description": "Adds solid variant of all grass blocks",
-  "authors": ["thebluetropics"],
-  "license": ["MIT"],
-  "contact": {
-    "sources": "https://github.com/thebluetropics/solid-grass-block",
-    "issues": "https://github.com/thebluetropics/solid-grass-block/issues"
-  },
-  "icon": "assets/%mod_id%/icon.png",
-  "custom": {
-    "modmenu": {
-      "links": {
-        "modmenu.discord": "https://discord.com/invite/A9hgghDk48"
-      },
-      "update_checker": false
-    }
-  },
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-      "io.github.thebluetropics.solidgrassblock.SolidGrassBlockMod"
-    ],
-    "client": [
-      "io.github.thebluetropics.solidgrassblock.client.SolidGrassBlockModClient"
-    ]
-  },
-  "mixins": [
-    {
-      "environment": "*",
-      "config": "%mod_id%.common.mixins.json"
-    }
-  ],
-  "depends": {
-    "minecraft": "1.20.6",
-    "fabricloader": ">=0.16.0",
-    "fabric-api": ">=0.97.8+1.20.6",
-    "java": ">=21"
-  }
+	"schemaVersion": 1,
+	"id": "%mod_id%",
+	"version": "%version%",
+	"name": "Solid Grass Block",
+	"description": "Adds solid variant of all grass blocks",
+	"authors": ["thebluetropics"],
+	"license": ["MIT"],
+	"contact": {
+		"sources": "https://github.com/thebluetropics/solid-grass-block",
+		"issues": "https://github.com/thebluetropics/solid-grass-block/issues"
+	},
+	"icon": "assets/%mod_id%/icon.png",
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.discord": "https://discord.com/invite/A9hgghDk48"
+			},
+			"update_checker": false
+		}
+	},
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"io.github.thebluetropics.solidgrassblock.SolidGrassBlockMod"
+		],
+		"client": [
+			"io.github.thebluetropics.solidgrassblock.client.SolidGrassBlockModClient"
+		]
+	},
+	"mixins": [
+		{
+			"environment": "*",
+			"config": "%mod_id%.common.mixins.json"
+		}
+	],
+	"depends": {
+		"minecraft": "1.20.6",
+		"fabricloader": ">=0.16.0",
+		"fabric-api": ">=0.97.8+1.20.6",
+		"java": ">=21"
+	}
 }

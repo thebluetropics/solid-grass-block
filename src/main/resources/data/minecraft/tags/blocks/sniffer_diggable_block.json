@@ -1,7 +1,7 @@
 {
-  "replace": false,
-  "values": [
-    "solid_grass_block:solid_grass_block",
-    "solid_grass_block:solid_podzol"
-  ]
+	"replace": false,
+	"values": [
+		"solid_grass_block:solid_grass_block",
+		"solid_grass_block:solid_podzol"
+	]
 }

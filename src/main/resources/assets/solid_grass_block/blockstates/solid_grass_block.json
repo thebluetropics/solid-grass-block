@@ -1,34 +1,34 @@
 {
-  "multipart": [
-    {
-      "apply": [
-        {
-          "model": "solid_grass_block:block/solid_grass_block"
-        },
-        {
-          "model": "solid_grass_block:block/solid_grass_block",
-          "y": 90
-        },
-        {
-          "model": "solid_grass_block:block/solid_grass_block",
-          "y": 180
-        },
-        {
-          "model": "solid_grass_block:block/solid_grass_block",
-          "y": 270
-        }
-      ],
-      "when": {
-        "eaten": false
-      }
-    },
-    {
-      "apply": {
-        "model": "solid_grass_block:block/solid_grass_block_eaten"
-      },
-      "when": {
-        "eaten": true
-      }
-    }
-  ]
+	"multipart": [
+		{
+			"apply": [
+				{
+					"model": "solid_grass_block:block/solid_grass_block"
+				},
+				{
+					"model": "solid_grass_block:block/solid_grass_block",
+					"y": 90
+				},
+				{
+					"model": "solid_grass_block:block/solid_grass_block",
+					"y": 180
+				},
+				{
+					"model": "solid_grass_block:block/solid_grass_block",
+					"y": 270
+				}
+			],
+			"when": {
+				"eaten": false
+			}
+		},
+		{
+			"apply": {
+				"model": "solid_grass_block:block/solid_grass_block_eaten"
+			},
+			"when": {
+				"eaten": true
+			}
+		}
+	]
 }

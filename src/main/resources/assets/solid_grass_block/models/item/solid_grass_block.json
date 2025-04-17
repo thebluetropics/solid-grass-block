@@ -1,11 +1,11 @@
 {
-  "parent": "solid_grass_block:block/solid_grass_block",
-  "overrides": [
-    {
-      "predicate": {
-        "solid_grass_block:eaten": 1
-      },
-      "model": "solid_grass_block:item/solid_grass_block_eaten"
-    }
-  ]
+	"parent": "solid_grass_block:block/solid_grass_block",
+	"overrides": [
+		{
+			"predicate": {
+				"solid_grass_block:eaten": 1
+			},
+			"model": "solid_grass_block:item/solid_grass_block_eaten"
+		}
+	]
 }

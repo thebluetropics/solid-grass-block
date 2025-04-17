@@ -9,20 +9,20 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModDataComponents {
-  /**
-   * Indicates whether a <b>Solid Grass Block</b> has been eaten by mobs.
-   */
-  public static final DataComponentType<Boolean> EATEN = register(
-    "eaten",
-    DataComponentType.<Boolean>builder()
-      .codec(Codec.BOOL)
-      .packetCodec(PacketCodecs.BOOL)
-      .build()
-  );
+	/**
+	 * Indicates whether a <b>Solid Grass Block</b> has been eaten by mobs.
+	 */
+	public static final DataComponentType<Boolean> EATEN = register(
+		"eaten",
+		DataComponentType.<Boolean>builder()
+			.codec(Codec.BOOL)
+			.packetCodec(PacketCodecs.BOOL)
+			.build()
+	);
 
-  public static <T> DataComponentType<T> register(String id, DataComponentType<T> dataComponentType) {
-    return Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of(SolidGrassBlockMod.ID, id), dataComponentType);
-  }
+	public static <T> DataComponentType<T> register(String id, DataComponentType<T> dataComponentType) {
+		return Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of(SolidGrassBlockMod.ID, id), dataComponentType);
+	}
 
-  public static void initialize() { /* ... */ }
+	public static void initialize() { /* ... */ }
 }

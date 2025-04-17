@@ -1,13 +1,12 @@
 {
-  "block.solid_grass_block.solid_grass_block": "Balok Rumput Padat",
-  "block.solid_grass_block.solid_dirt_path": "Rintis Tanah Padat",
-  "block.solid_grass_block.solid_podzol": "Tanah Asam Padat",
-  "block.solid_grass_block.solid_mycelium": "Miselium Padat",
-  "block.solid_grass_block.solid_crimson_nylium": "Nilium Kirmizi Padat",
-  "block.solid_grass_block.solid_warped_nylium": "Nilium Kerukut Padat",
-  "itemGroup.solid_grass_block.solid_grass_block": "Solid Grass Block",
-
-  "modmenu.nameTranslation.solid_grass_block": "Solid Grass Block",
-  "modmenu.descriptionTranslation.modmenu": "Menambahkan variasi padat untuk semua balok rumput",
-  "modmenu.summaryTranslation.modmenu": "Menambahkan variasi padat untuk semua balok rumput"
+	"block.solid_grass_block.solid_grass_block": "Balok Rumput Padat",
+	"block.solid_grass_block.solid_dirt_path": "Rintis Tanah Padat",
+	"block.solid_grass_block.solid_podzol": "Tanah Asam Padat",
+	"block.solid_grass_block.solid_mycelium": "Miselium Padat",
+	"block.solid_grass_block.solid_crimson_nylium": "Nilium Kirmizi Padat",
+	"block.solid_grass_block.solid_warped_nylium": "Nilium Kerukut Padat",
+	"itemGroup.solid_grass_block.solid_grass_block": "Solid Grass Block",
+	"modmenu.nameTranslation.solid_grass_block": "Solid Grass Block",
+	"modmenu.descriptionTranslation.modmenu": "Menambahkan variasi padat untuk semua balok rumput",
+	"modmenu.summaryTranslation.modmenu": "Menambahkan variasi padat untuk semua balok rumput"
 }

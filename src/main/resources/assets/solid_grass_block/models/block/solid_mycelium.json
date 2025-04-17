@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "minecraft:block/mycelium_top",
-    "particle": "minecraft:block/mycelium_top"
-  }
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+		"all": "minecraft:block/mycelium_top",
+		"particle": "minecraft:block/mycelium_top"
+	}
 }

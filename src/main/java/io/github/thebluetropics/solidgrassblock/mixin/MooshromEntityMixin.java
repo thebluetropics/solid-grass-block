@@ -11,17 +11,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MooshroomEntity.class)
 public class MooshromEntityMixin {
-  /// Allows mooshroom to favor solid mycelium for pathfinding.
-  @Inject(
-    at = @At("HEAD"),
-    method = "getPathfindingFavor",
-    cancellable = true
-  )
-  private void getPathfindingFavor(BlockPos pos, WorldView world, CallbackInfoReturnable<Float> info) {
-    var lowerBlockState = world.getBlockState(pos.down());
+	/// Allows mooshroom to favor solid mycelium for pathfinding.
+	@Inject(
+		at = @At("HEAD"),
+		method = "getPathfindingFavor",
+		cancellable = true
+	)
+	private void getPathfindingFavor(BlockPos pos, WorldView world, CallbackInfoReturnable<Float> info) {
+		var lowerBlockState = world.getBlockState(pos.down());
 
-    if (lowerBlockState.isOf(ModBlocks.SOLID_MYCELIUM)) {
-      info.setReturnValue(10.0f);
-    }
-  }
+		if (lowerBlockState.isOf(ModBlocks.SOLID_MYCELIUM)) {
+			info.setReturnValue(10.0f);
+		}
+	}
 }
