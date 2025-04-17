@@ -26,8 +26,6 @@ dependencies {
 }
 
 loom {
-	splitEnvironmentSourceSets()
-
 	runs {
 		named("client") {
 			runDir = "run/client"
