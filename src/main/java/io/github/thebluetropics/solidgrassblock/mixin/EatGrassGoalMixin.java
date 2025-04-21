@@ -1,7 +1,8 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
-import io.github.thebluetropics.solidgrassblock.api.block.ModifiedGrassBlock;
-import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
+import com.terraformersmc.modmenu.util.mod.Mod;
+import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
+import io.github.thebluetropics.solidgrassblock.block.SolidGrassBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -29,7 +30,7 @@ public class EatGrassGoalMixin {
 	@Shadow
 	private World world;
 
-	// Allow mobs to start eating custom grass blocks.
+	// Allow mobs to start eating custom grass blocks
 	@Inject(
 		method = "canStart()Z",
 		at = @At(
@@ -45,17 +46,13 @@ public class EatGrassGoalMixin {
 			var lowerBlockPos = blockPos.down();
 			var lowerBlockState = this.world.getBlockState(lowerBlockPos);
 
-			if (lowerBlockState.isIn(ModBlockTags.GRASS_BLOCK)) {
-				if (lowerBlockState.getBlock() instanceof ModifiedGrassBlock block) {
-					info.setReturnValue(block.canMobsEat(lowerBlockState));
-				}
-
+			if (lowerBlockState.isOf(ModBlocks.SOLID_GRASS_BLOCK) && !lowerBlockState.get(SolidGrassBlock.EATEN)) {
 				info.setReturnValue(true);
 			}
 		}
 	}
 
-	/// Set `eaten` block state to `true` after being eaten by mobs.
+	// Set `eaten` block state to `true` after being eaten by mobs
 	@Inject(
 		method = "tick()V",
 		at = @At(
@@ -65,18 +62,12 @@ public class EatGrassGoalMixin {
 		cancellable = true
 	)
 	private void tick(CallbackInfo info) {
-		var blockPos = this.mob.getBlockPos().down();
-		var blockState = this.world.getBlockState(blockPos);
+		var lowerBlockPos = this.mob.getBlockPos().down();
+		var lowerBlockState = this.world.getBlockState(lowerBlockPos);
 
-		// For custom grass blocks
-		if (blockState.isIn(ModBlockTags.GRASS_BLOCK)) {
-
+		if (lowerBlockState.isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
 			if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
-				if (blockState.getBlock() instanceof ModifiedGrassBlock block) {
-					this.world.setBlockState(blockPos, block.getEatenState(), Block.NOTIFY_LISTENERS);
-				} else {
-					this.world.setBlockState(blockPos, Blocks.DIRT.getDefaultState(), Block.NOTIFY_LISTENERS);
-				}
+				this.world.setBlockState(lowerBlockPos, Blocks.DIRT.getDefaultState(), Block.NOTIFY_LISTENERS);
 			}
 
 			this.mob.onEatingGrass();

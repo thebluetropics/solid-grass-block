@@ -19,14 +19,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 
 public class SolidDirtPathBlock extends Block {
-	/**
-	 * Force solid dirt path to be a full cube when set to <code>true</code>.
-	 */
+	/** Forces solid dirt path to be a full cube when set to <code>true</code> */
 	public static final BooleanProperty FULL_CUBE = BooleanProperty.of("full_cube");
 
-	/**
-	 * Set to <code>true</code> when there's a solid block on top of solid dirt path.
-	 */
+	/** Set to <code>true</code> when there's a solid block on top of solid dirt path */
 	public static final BooleanProperty CONNECTED = BooleanProperty.of("connected");
 
 	public SolidDirtPathBlock(Settings settings) {

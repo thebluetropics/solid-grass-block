@@ -1,7 +1,6 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
-import io.github.thebluetropics.solidgrassblock.api.block.ModifiedGrassBlock;
-import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
+import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
 import net.minecraft.entity.passive.AbstractHorseEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -16,7 +15,7 @@ public class AbstractHorseEntityMixin {
 	@Shadow
 	private int eatingGrassTicks;
 
-	// Allow horses to eat custom grass blocks.
+	// Allow horses to eat custom grass blocks
 	@Inject(
 		at = @At(
 			value = "INVOKE",
@@ -34,16 +33,8 @@ public class AbstractHorseEntityMixin {
 				var lowerBlockState = entity.getWorld().getBlockState(entity.getBlockPos().down());
 
 				if (!entity.isEatingGrass()) {
-					if (lowerBlockState.isIn(ModBlockTags.GRASS_BLOCK)) {
-						if (lowerBlockState.getBlock() instanceof ModifiedGrassBlock block) {
-							if (block.canMobsEat(lowerBlockState) && !entity.hasPassengers() && Objects.equals(entity.getRandom().nextInt(300), 0)) {
-								entity.setEatingGrass(true);
-							}
-						} else {
-							if (!entity.hasPassengers() && Objects.equals(entity.getRandom().nextInt(300), 0)) {
-								entity.setEatingGrass(true);
-							}
-						}
+					if (lowerBlockState.isOf(ModBlocks.SOLID_GRASS_BLOCK) && !entity.hasPassengers() && Objects.equals(entity.getRandom().nextInt(300), 0)) {
+						entity.setEatingGrass(true);
 					}
 				}
 			}

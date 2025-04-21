@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(NetherrackBlock.class)
 public class NetherrackBlockMixin {
-	// Allows solid warped nylium to spread.
+	// Allows solid warped nylium to spread
 	@Redirect(
 		method = "grow(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/random/Random;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V",
 		at = @At(
@@ -25,7 +25,7 @@ public class NetherrackBlockMixin {
 		return BlockStateHelper.isOf(blockState, Blocks.WARPED_NYLIUM, ModBlocks.SOLID_WARPED_NYLIUM);
 	}
 
-	// Allows solid crimson nylium to spread.
+	// Allows solid crimson nylium to spread
 	@Redirect(
 		method = "grow(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/random/Random;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V",
 		at = @At(

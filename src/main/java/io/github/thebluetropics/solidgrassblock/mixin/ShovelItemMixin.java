@@ -1,11 +1,8 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
-import io.github.thebluetropics.solidgrassblock.api.block.ModifiedGrassBlock;
-import io.github.thebluetropics.solidgrassblock.api.block.ModifiedPodzolBlock;
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
 import io.github.thebluetropics.solidgrassblock.block.SolidDirtPathBlock;
 import io.github.thebluetropics.solidgrassblock.helper.BlockStateHelper;
-import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -57,13 +54,13 @@ public class ShovelItemMixin {
 		}
 
 		// Turn custom podzol block into dirt path.
-		if (blockState.getBlock() instanceof ModifiedPodzolBlock block) {
+		if (blockState.isOf(ModBlocks.SOLID_PODZOL)) {
 			if (world.getBlockState(blockPos.up()).isAir()) {
 				if (!world.isClient) {
-					var pathState = block.getPathState();
+					var pathState = ModBlocks.SOLID_DIRT_PATH.getDefaultState();
 
-					world.setBlockState(blockPos, ModBlocks.SOLID_DIRT_PATH.getDefaultState(), Block.NOTIFY_ALL_AND_REDRAW);
-					world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(context.getPlayer(), ModBlocks.SOLID_DIRT_PATH.getDefaultState()));
+					world.setBlockState(blockPos, pathState, Block.NOTIFY_ALL_AND_REDRAW);
+					world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(context.getPlayer(), pathState));
 
 					var player = context.getPlayer();
 
@@ -76,14 +73,10 @@ public class ShovelItemMixin {
 			}
 		}
 
-		if (blockState.isIn(ModBlockTags.GRASS_BLOCK)) {
+		if (blockState.isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
 			if (world.getBlockState(blockPos.up()).isAir()) {
 				if (!world.isClient()) {
-					BlockState pathState = Blocks.DIRT_PATH.getDefaultState();
-
-					if (blockState.getBlock() instanceof ModifiedGrassBlock block) {
-						pathState = block.getPathState();
-					}
+					var pathState = ModBlocks.SOLID_DIRT_PATH.getDefaultState();
 
 					world.setBlockState(blockPos, pathState, Block.NOTIFY_ALL_AND_REDRAW);
 					world.emitGameEvent(

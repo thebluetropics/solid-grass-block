@@ -19,7 +19,7 @@ public class FungusBlockMixin {
 	@Shadow
 	private Block nylium;
 
-	// Allows fungus to be planted on top of solid mycelium.
+	// Allows fungus to be planted on top of solid mycelium
 	@Inject(
 		at = @At("HEAD"),
 		method = "canPlantOnTop",
@@ -31,7 +31,7 @@ public class FungusBlockMixin {
 		}
 	}
 
-	// Allows fungus on top of solid nyliums to be grown using bone meal.
+	// Allows fungus on top of solid nyliums to be grown using bone meal
 	@Inject(
 		at = @At("HEAD"),
 		method = "isFertilizable",

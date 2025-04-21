@@ -1,8 +1,6 @@
 package io.github.thebluetropics.solidgrassblock.mixin;
 
-import io.github.thebluetropics.solidgrassblock.api.block.ModifiedGrassBlock;
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
-import io.github.thebluetropics.solidgrassblock.tag.ModBlockTags;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldView;
@@ -20,19 +18,6 @@ public class AnimalEntityMixin {
 		cancellable = true
 	)
 	private void isOf(BlockPos pos, WorldView world, CallbackInfoReturnable<Float> info) {
-		var lowerPos = pos.down();
-		var lowerState = world.getBlockState(lowerPos);
-
-		if (lowerState.isIn(ModBlockTags.GRASS_BLOCK)) {
-			if (lowerState.getBlock() instanceof ModifiedGrassBlock block) {
-				if (block.canAnimalPathfindingFavor(lowerState, world, lowerPos)) {
-					info.setReturnValue(10.0f);
-				}
-			} else {
-				info.setReturnValue(10.0f);
-			}
-		}
-
 		if (world.getBlockState(pos.down()).isOf(ModBlocks.SOLID_GRASS_BLOCK)) {
 			info.setReturnValue(10.0f);
 		}

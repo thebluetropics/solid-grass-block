@@ -73,9 +73,7 @@ public class SolidNyliumBlock extends Block implements Fertilizable {
 		}
 	}
 
-	/**
-	 * Checks whether a nylium block can survive.
-	 */
+	/** Checks whether a nylium block can survive */
 	private static boolean canNyliumSurvive(BlockState state, WorldView world, BlockPos pos) {
 		var upperPos = pos.up();
 		var upperState = world.getBlockState(upperPos);
@@ -93,9 +91,7 @@ public class SolidNyliumBlock extends Block implements Fertilizable {
 		return realisticOpacity < world.getMaxLightLevel();
 	}
 
-	/**
-	 * Checks whether a solid nylium block can survive.
-	 */
+	/**  Checks whether a solid nylium block can survive */
 	private static boolean canSolidNyliumSurvive(BlockState state, WorldView world, BlockPos pos) {
 		for (Direction direction : Direction.values()) {
 			var checkPos = pos.offset(direction);

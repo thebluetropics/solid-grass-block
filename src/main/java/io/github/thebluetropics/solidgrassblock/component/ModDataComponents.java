@@ -9,9 +9,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModDataComponents {
-	/**
-	 * Indicates whether a <b>Solid Grass Block</b> has been eaten by mobs.
-	 */
+	// Indicates whether a solid grass block has been eaten by mobs
 	public static final DataComponentType<Boolean> EATEN = register(
 		"eaten",
 		DataComponentType.<Boolean>builder()
