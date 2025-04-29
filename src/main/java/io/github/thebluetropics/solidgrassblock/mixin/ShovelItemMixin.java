@@ -53,7 +53,7 @@ public class ShovelItemMixin {
 			}
 		}
 
-		// Turn custom podzol block into dirt path.
+		// Turn custom podzol block into dirt path
 		if (blockState.isOf(ModBlocks.SOLID_PODZOL)) {
 			if (world.getBlockState(blockPos.up()).isAir()) {
 				if (!world.isClient) {
