@@ -19,7 +19,7 @@ import net.minecraft.world.chunk.light.ChunkLightProvider;
 import java.util.Objects;
 
 public class SolidGrassBlock extends Block implements Fertilizable {
-	/** Indicates whether a solid grass block has been eaten by mobs */
+	/** Set to <code>true</code> if a solid grass block is eaten (e.g by sheep) */
 	public static final BooleanProperty EATEN = BooleanProperty.of("eaten");
 
 	public SolidGrassBlock(Settings settings) {
@@ -51,7 +51,6 @@ public class SolidGrassBlock extends Block implements Fertilizable {
 		}
 	}
 
-	/** Spreading logic */
 	public static void spread(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 		var spreadState = Blocks.GRASS_BLOCK.getDefaultState();
 
