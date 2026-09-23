@@ -1,0 +1,40 @@
+{
+	"multipart": [
+		{
+			"apply": {
+				"model": "solid_grass_block:block/solid_dirt_path"
+			},
+			"when": {
+				"full_cube": false,
+				"connected": false
+			}
+		},
+		{
+			"apply": {
+				"model": "solid_grass_block:block/solid_dirt_path_full_cube"
+			},
+			"when": {
+				"full_cube": true,
+				"connected": false
+			}
+		},
+		{
+			"apply": {
+				"model": "solid_grass_block:block/solid_dirt_path_full_cube"
+			},
+			"when": {
+				"full_cube": false,
+				"connected": true
+			}
+		},
+		{
+			"apply": {
+				"model": "solid_grass_block:block/solid_dirt_path_full_cube"
+			},
+			"when": {
+				"full_cube": true,
+				"connected": true
+			}
+		}
+	]
+}

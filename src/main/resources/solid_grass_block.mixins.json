@@ -1,0 +1,19 @@
+{
+	"required": true,
+	"package": "io.github.thebluetropics.solidgrassblock.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"BoneMealItemMixin",
+		"EatGrassGoalMixin",
+		"GrassBlockMixin",
+		"HoeItemMixin",
+		"NetherrackBlockMixin",
+		"ShovelItemMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

@@ -1,0 +1,15 @@
+# Gradle
+.gradle/
+build/
+
+# Intellij IDEA
+.idea/
+
+# MacOS
+*.DS_Store
+
+# Minecraft
+/run/
+
+# Maven
+/repository/

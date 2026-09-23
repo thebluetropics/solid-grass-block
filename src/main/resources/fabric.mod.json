@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "solid_grass_block",
+	"version": "0.4.0-alpha",
+	"name": "Solid Grass Block",
+	"description": "Solid variants of all grass blocks",
+  "license": "MIT",
+	"icon": "solid_grass_block_icon.png",
+	"authors": [		{
+		"name": "thebluetropics",
+		"contact": {
+			"email": "thebluetropics@gmail.com",
+			"homepage": "https://github.com/thebluetropics"
+		}
+	}],
+	"contact": {
+		"sources": "https://github.com/thebluetropics/solid-grass-block",
+		"issues": "https://github.com/thebluetropics/solid-grass-block/issues"
+	},
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"io.github.thebluetropics.solidgrassblock.SolidGrassBlockMod"
+		],
+		"client": [
+			"io.github.thebluetropics.solidgrassblock.client.SolidGrassBlockModClient"
+		]
+	},
+	"mixins": [
+		"solid_grass_block.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "26.1",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
