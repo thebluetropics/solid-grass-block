@@ -74,6 +74,14 @@ publishing {
 		}
 	}
 	repositories {
-		mavenLocal()
+    maven {
+      name = "GithubPackages"
+      url = uri("https://maven.pkg.github.com/thebluetropics/solid-grass-block")
+      credentials {
+        username = System.getenv("GITHUB_ACTOR")
+        password = System.getenv("GITHUB_TOKEN")
+      }
+    }
+    mavenLocal()
 	}
 }
