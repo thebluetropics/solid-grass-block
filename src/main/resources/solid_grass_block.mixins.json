@@ -5,7 +5,7 @@
 	"mixins": [
     "AbstractHorseMixin",
 		"BoneMealItemMixin",
-		"EatGrassGoalMixin",
+		"EatBlockGoalMixin",
 		"GrassBlockMixin",
 		"HoeItemMixin",
 		"NetherrackBlockMixin",
