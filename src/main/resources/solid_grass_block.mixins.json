@@ -3,6 +3,7 @@
 	"package": "io.github.thebluetropics.solidgrassblock.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
+    "AbstractHorseMixin",
 		"BoneMealItemMixin",
 		"EatGrassGoalMixin",
 		"GrassBlockMixin",
