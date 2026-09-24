@@ -9,7 +9,8 @@
 		"GrassBlockMixin",
 		"HoeItemMixin",
 		"NetherrackBlockMixin",
-		"ShovelItemMixin"
+		"ShovelItemMixin",
+    "AnimalMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
