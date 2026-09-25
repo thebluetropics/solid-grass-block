@@ -10,7 +10,12 @@
 		"HoeItemMixin",
 		"NetherrackBlockMixin",
 		"ShovelItemMixin",
-    "AnimalMixin"
+    "AnimalMixin",
+    "OcelotMixin",
+    "MushroomCowMixin",
+    "HoglinMixin",
+    "NetherFungusBlockMixin",
+    "HugeFungusFeatureMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
