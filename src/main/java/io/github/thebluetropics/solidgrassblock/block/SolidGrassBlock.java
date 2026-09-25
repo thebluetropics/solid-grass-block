@@ -102,7 +102,7 @@ public class SolidGrassBlock extends Block implements BonemealableBlock {
 			return false;
 		}
 
-		return LightEngine.getLightBlockInto(state, upperState, Direction.UP, upperState.getLightDampening()) < 15;
+		return LightEngine.getLightDampeningInto(state, upperState, Direction.UP, upperState.getLightDampening()) < 15;
 	}
 
 	public static boolean canSolidGrassBlockSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {

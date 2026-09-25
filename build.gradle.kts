@@ -7,7 +7,7 @@ val modVersion = "0.5.1-beta"
 val artifactName = "solid-grass-block"
 
 base {
-  archivesName = "${artifactName}-fabric-26.1"
+  archivesName = "${artifactName}-fabric-26.2"
 }
 
 repositories {
@@ -18,10 +18,10 @@ repositories {
 }
 
 dependencies {
-	minecraft("com.mojang:minecraft:26.1")
-	implementation("net.fabricmc:fabric-loader:0.18.4")
-	implementation("net.fabricmc.fabric-api:fabric-api:0.144.0+26.1")
-  implementation("com.terraformersmc:modmenu:18.0.1")
+	minecraft("com.mojang:minecraft:26.2")
+	implementation("net.fabricmc:fabric-loader:0.19.5")
+	implementation("net.fabricmc.fabric-api:fabric-api:0.152.1+26.2")
+  implementation("com.terraformersmc:modmenu:20.0.3")
 }
 
 loom {
