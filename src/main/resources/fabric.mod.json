@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "solid_grass_block",
-	"version": "0.5.1-beta",
+	"version": "0.5.2-beta",
 	"name": "Solid Grass Block",
 	"description": "Solid variants of all grass blocks",
   "license": "MIT",
