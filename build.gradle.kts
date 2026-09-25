@@ -3,7 +3,7 @@ plugins {
 	id("maven-publish")
 }
 
-val modVersion = "0.4.0-alpha"
+val modVersion = "0.5.0-beta"
 val artifactName = "solid-grass-block"
 
 base {
