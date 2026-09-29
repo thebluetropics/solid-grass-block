@@ -1,0 +1,30 @@
+license="MIT"
+issueTrackerURL="https://github.com/thebluetropics/solid-grass-block/issues"
+
+[[mods]]
+modId="solid_grass_block"
+version="0.5.0-beta"
+displayName="Solid Grass Block"
+displayURL="https://github.com/thebluetropics/solid-grass-block"
+authors="thebluetropics"
+description='''
+Solid Grass Block
+'''
+logoFile="solid_grass_block.png"
+
+[[mixins]]
+config="solid_grass_block.mixins.json"
+
+[[dependencies.solid_grass_block]]
+modId="neoforge"
+type="required"
+versionRange="[26.1.0.19-beta,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.solid_grass_block]]
+modId="minecraft"
+type="required"
+versionRange="[26.1]"
+ordering="NONE"
+side="BOTH"

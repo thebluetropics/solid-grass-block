@@ -1,0 +1,15 @@
+# Gradle
+/.gradle/
+/build/
+
+# NeoForge
+/run/
+
+# Data generation
+/src/generated/resources/
+
+# Intellij IDEA
+/.idea/
+
+# MacOS
+*.DS_Store
