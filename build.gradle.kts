@@ -3,11 +3,10 @@ plugins {
 	id("maven-publish")
 }
 
-val modVersion = "0.5.1-beta"
-val artifactName = "solid-grass-block"
+version = "0.5.1-beta"
 
 base {
-	archivesName = "${artifactName}-fabric-26.1"
+	archivesName = "solid-grass-block-fabric-26.1"
 }
 
 repositories {
@@ -69,7 +68,7 @@ publishing {
 		create<MavenPublication>("mavenJava") {
 			groupId = "io.github.thebluetropics"
 			artifactId = project.base.archivesName.get()
-			version = modVersion
+			version = project.version.toString()
 			from(components["java"])
 		}
 	}
