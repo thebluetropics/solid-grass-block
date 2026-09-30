@@ -16,7 +16,7 @@ public final class ModCreativeModeTabs {
 	);
 	public static final CreativeModeTab SOLID_GRASS_BLOCK = FabricCreativeModeTab.builder()
 		.icon(() -> new ItemStack(ModItems.SOLID_GRASS_BLOCK))
-		.title(Component.translatable("creativeTab." + SolidGrassBlockMod.MOD_ID))
+		.title(Component.translatable("itemGroup." + SolidGrassBlockMod.MOD_ID))
 		.displayItems((parameters, output) -> {
 			output.accept(ModItems.SOLID_GRASS_BLOCK);
 			output.accept(ModItems.SOLID_DIRT_PATH);
