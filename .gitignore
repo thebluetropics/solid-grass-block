@@ -10,6 +10,3 @@ build/
 
 # Minecraft
 /run/
-
-# Maven
-/repository/
