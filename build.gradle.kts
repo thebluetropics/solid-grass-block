@@ -4,10 +4,9 @@ plugins {
 }
 
 val modVersion = "0.5.2-beta"
-val artifactName = "solid-grass-block"
 
 base {
-  archivesName = "${artifactName}-fabric-26.2"
+	archivesName = "solid-grass-block-fabric-26.2"
 }
 
 repositories {
@@ -69,7 +68,7 @@ publishing {
 		create<MavenPublication>("mavenJava") {
 			groupId = "io.github.thebluetropics"
 			artifactId = project.base.archivesName.get()
-			version = modVersion
+			version = project.version.toString()
 			from(components["java"])
 		}
 	}
