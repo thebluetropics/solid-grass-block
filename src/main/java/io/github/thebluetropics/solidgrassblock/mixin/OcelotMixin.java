@@ -10,15 +10,15 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(Ocelot.class)
 public class OcelotMixin {
-  @Redirect(
-    method = "checkSpawnObstruction",
-    at = @At(
-      value = "INVOKE",
-      target = "Lnet/minecraft/world/level/block/state/BlockState;is(Ljava/lang/Object;)Z",
-      ordinal = 0
-    )
-  )
-  private boolean is(BlockState state, Object object) {
-    return state.is((Block) object) || state.is(ModBlocks.SOLID_GRASS_BLOCK);
-  }
+	@Redirect(
+		method = "checkSpawnObstruction",
+		at = @At(
+			value = "INVOKE",
+			target = "Lnet/minecraft/world/level/block/state/BlockState;is(Ljava/lang/Object;)Z",
+			ordinal = 0
+		)
+	)
+	private boolean is(BlockState state, Object object) {
+		return state.is((Block) object) || state.is(ModBlocks.SOLID_GRASS_BLOCK);
+	}
 }

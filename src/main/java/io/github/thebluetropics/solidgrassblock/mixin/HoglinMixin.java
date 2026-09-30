@@ -10,15 +10,15 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(Hoglin.class)
 public class HoglinMixin {
-  @Redirect(
-    method = "getWalkTargetValue",
-    at = @At(
-      value = "INVOKE",
-      target = "Lnet/minecraft/world/level/block/state/BlockState;is(Ljava/lang/Object;)Z",
-      ordinal = 0
-    )
-  )
-  private boolean is(BlockState state, Object object) {
-    return state.is((Block) object) || state.is(ModBlocks.SOLID_CRIMSON_NYLIUM);
-  }
+	@Redirect(
+		method = "getWalkTargetValue",
+		at = @At(
+			value = "INVOKE",
+			target = "Lnet/minecraft/world/level/block/state/BlockState;is(Ljava/lang/Object;)Z",
+			ordinal = 0
+		)
+	)
+	private boolean is(BlockState state, Object object) {
+		return state.is((Block) object) || state.is(ModBlocks.SOLID_CRIMSON_NYLIUM);
+	}
 }

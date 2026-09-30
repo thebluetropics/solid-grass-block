@@ -3,19 +3,19 @@
 	"package": "io.github.thebluetropics.solidgrassblock.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
-    "AbstractHorseMixin",
+		"AbstractHorseMixin",
 		"BoneMealItemMixin",
 		"EatBlockGoalMixin",
 		"GrassBlockMixin",
 		"HoeItemMixin",
 		"NetherrackBlockMixin",
 		"ShovelItemMixin",
-    "AnimalMixin",
-    "OcelotMixin",
-    "MushroomCowMixin",
-    "HoglinMixin",
-    "NetherFungusBlockMixin",
-    "HugeFungusFeatureMixin"
+		"AnimalMixin",
+		"OcelotMixin",
+		"MushroomCowMixin",
+		"HoglinMixin",
+		"NetherFungusBlockMixin",
+		"HugeFungusFeatureMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

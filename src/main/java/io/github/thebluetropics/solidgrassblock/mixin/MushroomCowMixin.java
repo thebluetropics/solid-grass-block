@@ -11,14 +11,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MushroomCow.class)
 public class MushroomCowMixin {
-  @Inject(
-    method = "getWalkTargetValue",
-    at = @At("HEAD"),
-    cancellable = true
-  )
-  private void getWalkTargetValue(final BlockPos pos, final LevelReader level, CallbackInfoReturnable<Float> info) {
-    if (level.getBlockState(pos.below()).is(ModBlocks.SOLID_MYCELIUM)) {
-      info.setReturnValue(10.0f);
-    }
-  }
+	@Inject(
+		method = "getWalkTargetValue",
+		at = @At("HEAD"),
+		cancellable = true
+	)
+	private void getWalkTargetValue(final BlockPos pos, final LevelReader level, CallbackInfoReturnable<Float> info) {
+		if (level.getBlockState(pos.below()).is(ModBlocks.SOLID_MYCELIUM)) {
+			info.setReturnValue(10.0f);
+		}
+	}
 }

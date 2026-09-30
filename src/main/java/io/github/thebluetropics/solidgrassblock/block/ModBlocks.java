@@ -16,18 +16,18 @@ import net.minecraft.world.level.material.MapColor;
 import java.util.function.Function;
 
 public final class ModBlocks {
-  public static final Block SOLID_GRASS_BLOCK = Registry.register(
-    BuiltInRegistries.BLOCK,
-    ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(SolidGrassBlockMod.MOD_ID, "solid_grass_block")),
-    new SolidGrassBlock(
-      Properties.of()
-        .setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(SolidGrassBlockMod.MOD_ID, "solid_grass_block")))
-        .mapColor(MapColor.GRASS)
-        .randomTicks()
-        .strength(0.6f)
-        .sound(SoundType.GRASS)
-    )
-  );
+	public static final Block SOLID_GRASS_BLOCK = Registry.register(
+		BuiltInRegistries.BLOCK,
+		ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(SolidGrassBlockMod.MOD_ID, "solid_grass_block")),
+		new SolidGrassBlock(
+			Properties.of()
+				.setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(SolidGrassBlockMod.MOD_ID, "solid_grass_block")))
+				.mapColor(MapColor.GRASS)
+				.randomTicks()
+				.strength(0.6f)
+				.sound(SoundType.GRASS)
+		)
+	);
 	public static final Block SOLID_DIRT_PATH = Registry.register(
 		BuiltInRegistries.BLOCK,
 		ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(SolidGrassBlockMod.MOD_ID, "solid_dirt_path")),

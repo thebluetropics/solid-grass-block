@@ -64,7 +64,7 @@ public class EatBlockGoalMixin {
 
 		if (blockState.is(ModBlocks.SOLID_GRASS_BLOCK)) {
 			if (((ServerLevel) this.level).getGameRules().get(GameRules.MOB_GRIEFING)) {
-        this.level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, blockPos, Block.getId(ModBlocks.SOLID_GRASS_BLOCK.defaultBlockState()));
+				this.level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, blockPos, Block.getId(ModBlocks.SOLID_GRASS_BLOCK.defaultBlockState()));
 				this.level.setBlock(blockPos, blockState.setValue(SolidGrassBlock.EATEN, true), 2);
 			}
 			this.mob.ate();

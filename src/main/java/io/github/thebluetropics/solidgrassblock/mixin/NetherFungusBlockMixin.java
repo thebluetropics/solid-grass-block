@@ -13,24 +13,24 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(NetherFungusBlock.class)
 public class NetherFungusBlockMixin {
-  @Inject(
-    method = "isValidBonemealTarget",
-    at = @At("HEAD"),
-    cancellable = true
-  )
-  private void solid_grass_block$isValidBoneMealTarget(final LevelReader level, final BlockPos pos, final BlockState state, CallbackInfoReturnable<Boolean> info) {
-    var lowerState = level.getBlockState(pos.below());
+	@Inject(
+		method = "isValidBonemealTarget",
+		at = @At("HEAD"),
+		cancellable = true
+	)
+	private void solid_grass_block$isValidBoneMealTarget(final LevelReader level, final BlockPos pos, final BlockState state, CallbackInfoReturnable<Boolean> info) {
+		var lowerState = level.getBlockState(pos.below());
 
-    if (state.is(Blocks.CRIMSON_FUNGUS)) {
-      if (lowerState.is(ModBlocks.SOLID_CRIMSON_NYLIUM) && level.isInsideBuildHeight(pos.above())) {
-        info.setReturnValue(true);
-      }
-    }
+		if (state.is(Blocks.CRIMSON_FUNGUS)) {
+			if (lowerState.is(ModBlocks.SOLID_CRIMSON_NYLIUM) && level.isInsideBuildHeight(pos.above())) {
+				info.setReturnValue(true);
+			}
+		}
 
-    if (state.is(Blocks.WARPED_FUNGUS)) {
-      if (lowerState.is(ModBlocks.SOLID_WARPED_NYLIUM) && level.isInsideBuildHeight(pos.above())) {
-        info.setReturnValue(true);
-      }
-    }
-  }
+		if (state.is(Blocks.WARPED_FUNGUS)) {
+			if (lowerState.is(ModBlocks.SOLID_WARPED_NYLIUM) && level.isInsideBuildHeight(pos.above())) {
+				info.setReturnValue(true);
+			}
+		}
+	}
 }

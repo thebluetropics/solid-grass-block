@@ -7,41 +7,41 @@ val modVersion = "0.5.1-beta"
 val artifactName = "solid-grass-block"
 
 base {
-  archivesName = "${artifactName}-fabric-26.1"
+	archivesName = "${artifactName}-fabric-26.1"
 }
 
 repositories {
-  maven {
-    name = "Terraformers"
-    url = uri("https://maven.terraformersmc.com/")
-  }
+	maven {
+		name = "Terraformers"
+		url = uri("https://maven.terraformersmc.com/")
+	}
 }
 
 dependencies {
 	minecraft("com.mojang:minecraft:26.1")
 	implementation("net.fabricmc:fabric-loader:0.18.4")
 	implementation("net.fabricmc.fabric-api:fabric-api:0.144.0+26.1")
-  implementation("com.terraformersmc:modmenu:18.0.1")
+	implementation("com.terraformersmc:modmenu:18.0.1")
 }
 
 loom {
-  splitEnvironmentSourceSets()
-  runs {
-    named("client") {
-      runDir = "run/client"
-      client()
-    }
-    named("server") {
-      runDir = "run/server"
-      server()
-    }
-  }
-  mods {
-    create("solid_grass_block") {
-      sourceSet("main")
-      sourceSet("client")
-    }
-  }
+	splitEnvironmentSourceSets()
+	runs {
+		named("client") {
+			runDir = "run/client"
+			client()
+		}
+		named("server") {
+			runDir = "run/server"
+			server()
+		}
+	}
+	mods {
+		create("solid_grass_block") {
+			sourceSet("main")
+			sourceSet("client")
+		}
+	}
 }
 
 tasks.withType(JavaCompile::class.java).configureEach {
@@ -74,14 +74,14 @@ publishing {
 		}
 	}
 	repositories {
-    maven {
-      name = "GithubPackages"
-      url = uri("https://maven.pkg.github.com/thebluetropics/solid-grass-block")
-      credentials {
-        username = System.getenv("GITHUB_ACTOR")
-        password = System.getenv("GITHUB_TOKEN")
-      }
-    }
-    mavenLocal()
+		maven {
+			name = "GithubPackages"
+			url = uri("https://maven.pkg.github.com/thebluetropics/solid-grass-block")
+			credentials {
+				username = System.getenv("GITHUB_ACTOR")
+				password = System.getenv("GITHUB_TOKEN")
+			}
+		}
+		mavenLocal()
 	}
 }
