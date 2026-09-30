@@ -3,6 +3,8 @@ package io.github.thebluetropics.solidgrassblock.mixin;
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
 import io.github.thebluetropics.solidgrassblock.block.SolidDirtPathBlock;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.context.UseOnContext;
@@ -21,14 +23,19 @@ public class ShovelItemMixin {
 		var level = context.getLevel();
 		var pos = context.getClickedPos();
 		var state = level.getBlockState(pos);
+		var player = context.getPlayer();
 
 		// Turn into solid dirt path
-		if (state.is(ModBlocks.SOLID_GRASS_BLOCK) || state.is(ModBlocks.SOLID_PODZOL) || state.is(ModBlocks.SOLID_MYCELIUM)) {
+		if (!context.getClickedFace().equals(Direction.DOWN) && (state.is(ModBlocks.SOLID_GRASS_BLOCK) || state.is(ModBlocks.SOLID_PODZOL) || state.is(ModBlocks.SOLID_MYCELIUM))) {
 			if (level.getBlockState(pos.above()).isAir()) {
+				level.playSound(player, pos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
 				if (!level.isClientSide()) {
-					level.setBlock(pos, ModBlocks.SOLID_DIRT_PATH.defaultBlockState(), Block.UPDATE_ALL_IMMEDIATE);
+					if (context.getClickedFace().getAxis().isHorizontal()) {
+						level.setBlock(pos, ModBlocks.SOLID_DIRT_PATH.defaultBlockState().setValue(SolidDirtPathBlock.FULL_CUBE, true), Block.UPDATE_ALL_IMMEDIATE);
+					} else {
+						level.setBlock(pos, ModBlocks.SOLID_DIRT_PATH.defaultBlockState(), Block.UPDATE_ALL_IMMEDIATE);
+					}
 					level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(context.getPlayer(), ModBlocks.SOLID_DIRT_PATH.defaultBlockState()));
-					var player = context.getPlayer();
 					if (player != null) context.getItemInHand().hurtAndBreak(1, player, context.getHand().asEquipmentSlot());
 				}
 				info.setReturnValue(InteractionResult.SUCCESS);
@@ -37,16 +44,13 @@ public class ShovelItemMixin {
 
 		// Turn dirt path into solid dirt path
 		if (context.getClickedFace().getAxis().isHorizontal() && state.is(Blocks.DIRT_PATH)) {
+			level.playSound(player, pos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
 			level.setBlock(pos, ModBlocks.SOLID_DIRT_PATH.defaultBlockState(), Block.UPDATE_ALL_IMMEDIATE);
 			level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(context.getPlayer(), ModBlocks.SOLID_DIRT_PATH.defaultBlockState()));
-
-			var player = context.getPlayer();
 			var stack = context.getItemInHand();
-
 			if (player != null) {
 				stack.hurtAndBreak(1, player, context.getHand().asEquipmentSlot());
 			}
-
 			info.setReturnValue(InteractionResult.SUCCESS);
 		}
 
@@ -54,10 +58,10 @@ public class ShovelItemMixin {
 		if (context.getClickedFace().equals(Direction.UP) && state.is(ModBlocks.SOLID_DIRT_PATH)) {
 			var updatedBlockState = state.setValue(SolidDirtPathBlock.FULL_CUBE, !state.getValue(SolidDirtPathBlock.FULL_CUBE));
 
+			level.playSound(player, pos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
 			level.setBlock(pos, updatedBlockState, Block.UPDATE_ALL_IMMEDIATE);
 			level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(context.getPlayer(), updatedBlockState));
 
-			var player = context.getPlayer();
 			var stack = context.getItemInHand();
 
 			if (player != null) {
