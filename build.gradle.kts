@@ -3,7 +3,7 @@ plugins {
 	id("maven-publish")
 }
 
-val modVersion = "0.5.3-beta"
+version = "0.5.3-beta"
 
 base {
 	archivesName = "solid-grass-block-fabric-26.2"
