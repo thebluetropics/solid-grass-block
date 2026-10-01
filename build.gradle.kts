@@ -5,7 +5,7 @@ plugins {
 	idea
 }
 
-version = "0.5.0-alpha"
+version = "0.5.1-beta"
 
 base {
 	archivesName = "solid-grass-block-neoforge-26.1"
