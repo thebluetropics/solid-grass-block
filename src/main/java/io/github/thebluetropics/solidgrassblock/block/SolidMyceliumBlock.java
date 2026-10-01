@@ -69,7 +69,7 @@ public class SolidMyceliumBlock extends Block {
 			return false;
 		}
 
-		return LightEngine.getLightBlockInto(state, upperState, Direction.UP, upperState.getLightDampening()) < 15;
+		return LightEngine.getLightDampeningInto(state, upperState, Direction.UP, upperState.getLightDampening()) < 15;
 	}
 
 	public static boolean canSolidMyceliumSurvive(final BlockState state, final LevelReader level, final BlockPos pos) {

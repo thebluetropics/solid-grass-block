@@ -3,14 +3,14 @@ issueTrackerURL="https://github.com/thebluetropics/solid-grass-block/issues"
 
 [[mods]]
 modId="solid_grass_block"
-version="0.5.1-beta"
+version="0.5.0-beta"
 displayName="Solid Grass Block"
 displayURL="https://github.com/thebluetropics/solid-grass-block"
 authors="thebluetropics"
 description='''
 Solid Grass Block
 '''
-logoFile="solid_grass_block.png"
+iconFile="solid_grass_block.png"
 
 [[mixins]]
 config="solid_grass_block.mixins.json"
@@ -18,13 +18,13 @@ config="solid_grass_block.mixins.json"
 [[dependencies.solid_grass_block]]
 modId="neoforge"
 type="required"
-versionRange="[26.1.0.19-beta,)"
+versionRange="[26.2.0.88,)"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.solid_grass_block]]
 modId="minecraft"
 type="required"
-versionRange="[26.1,26.1.2]"
+versionRange="[26.2]"
 ordering="NONE"
 side="BOTH"

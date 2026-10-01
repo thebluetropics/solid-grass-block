@@ -1,14 +1,14 @@
 plugins {
 	`java-library`
 	`maven-publish`
-	id("net.neoforged.moddev") version "2.0.147"
+	id("net.neoforged.moddev") version "2.0.148"
 	idea
 }
 
-version = "0.5.1-beta"
+version = "0.5.0-beta"
 
 base {
-	archivesName = "solid-grass-block-neoforge-26.1"
+	archivesName = "solid-grass-block-neoforge-26.2"
 }
 
 java {
@@ -19,7 +19,7 @@ java {
 }
 
 neoForge {
-	version = "26.1.0.19-beta"
+	version = "26.2.0.88"
 	runs {
 		register("client") {
 			client()

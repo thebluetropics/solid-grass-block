@@ -4,7 +4,7 @@ import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
 import io.github.thebluetropics.solidgrassblock.block.SolidGrassBlock;
 import io.github.thebluetropics.solidgrassblock.item.ModItems;
 import io.github.thebluetropics.solidgrassblock.item.component.ModDataComponents;
-import net.minecraft.advancements.criterion.StatePropertiesPredicate;
+import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
