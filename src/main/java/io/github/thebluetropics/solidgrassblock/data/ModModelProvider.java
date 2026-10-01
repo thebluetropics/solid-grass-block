@@ -1,5 +1,6 @@
 package io.github.thebluetropics.solidgrassblock.data;
 
+import com.mojang.math.Quadrant;
 import io.github.thebluetropics.solidgrassblock.SolidGrassBlockMod;
 import io.github.thebluetropics.solidgrassblock.block.ModBlocks;
 import io.github.thebluetropics.solidgrassblock.block.SolidDirtPathBlock;
@@ -10,10 +11,13 @@ import net.minecraft.client.color.item.GrassColorSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
+import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.MultiPartGenerator;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.client.renderer.block.dispatch.Variant;
+import net.minecraft.client.renderer.block.dispatch.VariantMutator;
 import net.minecraft.client.renderer.item.CuboidItemModelWrapper;
 import net.minecraft.client.renderer.item.SelectItemModel;
 import net.minecraft.client.renderer.item.properties.select.ComponentContents;
@@ -21,6 +25,8 @@ import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
+import net.minecraft.util.random.Weighted;
+import net.minecraft.util.random.WeightedList;
 import net.neoforged.neoforge.client.model.generators.template.ExtendedModelTemplateBuilder;
 
 import java.util.List;
@@ -38,7 +44,14 @@ public class ModModelProvider extends ModelProvider {
 			MultiPartGenerator.multiPart(ModBlocks.SOLID_GRASS_BLOCK.get())
 				.with(
 					BlockModelGenerators.condition().term(SolidGrassBlock.EATEN, false),
-					BlockModelGenerators.plainVariant(Identifier.parse("solid_grass_block:block/solid_grass_block"))
+					new MultiVariant(
+						WeightedList.of(
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_grass_block")), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_grass_block")).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_grass_block")).with(VariantMutator.Y_ROT.withValue(Quadrant.R180)), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_grass_block")).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)), 1)
+						)
+					)
 				)
 				.with(
 					BlockModelGenerators.condition().term(SolidGrassBlock.EATEN, true),
@@ -51,32 +64,78 @@ public class ModModelProvider extends ModelProvider {
 			MultiPartGenerator.multiPart(ModBlocks.SOLID_DIRT_PATH.get())
 				.with(
 					BlockModelGenerators.condition().term(SolidDirtPathBlock.FULL_CUBE, false).term(SolidDirtPathBlock.CONNECTED, false),
-					BlockModelGenerators.plainVariant(Identifier.parse("solid_grass_block:block/solid_dirt_path"))
+					new MultiVariant(
+						WeightedList.of(
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path")), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path")).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path")).with(VariantMutator.Y_ROT.withValue(Quadrant.R180)), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path")).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)), 1)
+						)
+					)
 				)
 				.with(
 					BlockModelGenerators.condition().term(SolidDirtPathBlock.FULL_CUBE, true).term(SolidDirtPathBlock.CONNECTED, false),
-					BlockModelGenerators.plainVariant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube"))
+					new MultiVariant(
+						WeightedList.of(
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube")), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube")).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube")).with(VariantMutator.Y_ROT.withValue(Quadrant.R180)), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube")).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)), 1)
+						)
+					)
 				)
 				.with(
 					BlockModelGenerators.condition().term(SolidDirtPathBlock.FULL_CUBE, false).term(SolidDirtPathBlock.CONNECTED, true),
-					BlockModelGenerators.plainVariant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube"))
+					new MultiVariant(
+						WeightedList.of(
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube")), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube")).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube")).with(VariantMutator.Y_ROT.withValue(Quadrant.R180)), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube")).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)), 1)
+						)
+					)
 				)
 				.with(
 					BlockModelGenerators.condition().term(SolidDirtPathBlock.FULL_CUBE, true).term(SolidDirtPathBlock.CONNECTED, true),
-					BlockModelGenerators.plainVariant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube"))
+					new MultiVariant(
+						WeightedList.of(
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube")), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube")).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube")).with(VariantMutator.Y_ROT.withValue(Quadrant.R180)), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_dirt_path_full_cube")).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)), 1)
+						)
+					)
 				)
 		);
 
 		// Block state definition for solid podzol
 		blockModels.blockStateOutput.accept(
 			MultiPartGenerator.multiPart(ModBlocks.SOLID_PODZOL.get())
-				.with(BlockModelGenerators.plainVariant(Identifier.parse("solid_grass_block:block/solid_podzol")))
+				.with(
+					new MultiVariant(
+						WeightedList.of(
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_podzol")), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_podzol")).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_podzol")).with(VariantMutator.Y_ROT.withValue(Quadrant.R180)), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_podzol")).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)), 1)
+						)
+					)
+				)
 		);
 
 		// Block state definition for solid mycelium
 		blockModels.blockStateOutput.accept(
 			MultiPartGenerator.multiPart(ModBlocks.SOLID_MYCELIUM.get())
-				.with(BlockModelGenerators.plainVariant(Identifier.parse("solid_grass_block:block/solid_mycelium")))
+				.with(
+					new MultiVariant(
+						WeightedList.of(
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_mycelium")), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_mycelium")).with(VariantMutator.Y_ROT.withValue(Quadrant.R90)), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_mycelium")).with(VariantMutator.Y_ROT.withValue(Quadrant.R180)), 1),
+							new Weighted<>(new Variant(Identifier.parse("solid_grass_block:block/solid_mycelium")).with(VariantMutator.Y_ROT.withValue(Quadrant.R270)), 1)
+						)
+					)
+				)
 		);
 
 		// Block state definition for solid crimson Nylium
