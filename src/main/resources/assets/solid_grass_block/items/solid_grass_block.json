@@ -1,0 +1,37 @@
+{
+	"model": {
+		"type": "minecraft:select",
+		"property": "minecraft:component",
+		"component": "solid_grass_block:eaten",
+		"cases": [
+			{
+				"when": false,
+				"model": {
+					"type": "minecraft:model",
+					"model": "solid_grass_block:item/solid_grass_block",
+					"tints": [
+						{
+							"type": "minecraft:grass",
+							"downfall": 1.0,
+							"temperature": 0.5
+						}
+					]
+				}
+			},
+			{
+				"when": true,
+				"model": {
+					"type": "minecraft:model",
+					"model": "solid_grass_block:item/solid_grass_block_eaten",
+					"tints": [
+						{
+							"type": "minecraft:grass",
+							"downfall": 1.0,
+							"temperature": 0.5
+						}
+					]
+				}
+			}
+		]
+	}
+}
